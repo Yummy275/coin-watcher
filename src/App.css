@@ -1,5 +1,9 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
 html {
-    padding: 1rem;
-    min-height: calc(100vh - 2rem);
+    color: white;
     background-color: black;
 }

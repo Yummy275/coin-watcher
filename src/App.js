@@ -1,9 +1,8 @@
 import './App.css';
-import getApiData from './data/api-getter';
+import Navbar from './components/Navbar';
 
 function App() {
-    getApiData();
-    return <div className="text-red-300">Hello</div>;
+    return <Navbar></Navbar>;
 }
 
 export default App;
