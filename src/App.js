@@ -1,8 +1,8 @@
 import './App.css';
-import Navbar from './components/Navbar';
+import StdBtn from './components/StdBtn';
 
 function App() {
-    return <Navbar></Navbar>;
+    return <StdBtn string="Options"></StdBtn>;
 }
 
 export default App;
