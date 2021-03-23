@@ -16,7 +16,7 @@ const CoinInfo = ({ logo, name, symbol, price, intervalPercentChange }) => {
     return (
         <div className={styles.container}>
             <div className={styles.headerHolder}>
-                <h2 className={styles.heading}>
+                <h2 className={styles.headingText}>
                     {name} ({symbol})
                 </h2>
                 <img
@@ -27,7 +27,7 @@ const CoinInfo = ({ logo, name, symbol, price, intervalPercentChange }) => {
             </div>
             <div className={styles.coinPriceInfoHolder}>
                 <p>Hold: 5</p>
-                <p>@ ${formattedPrice} per</p>
+                <p>@ ${formattedPrice}</p>
                 <p>$50,000</p>
                 <p>{intervalPercentChange}</p>
             </div>
