@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
 import getCoinsInfoFromApi from './api/getCoinsInfoFromApi';
-import CoinInfo from './components/CoinInfo';
+import CoinHolder from './components/CoinHolder';
 
 const savedCoins = {
     btc: { symbol: 'BTC', amount: '12.03' },
@@ -28,19 +28,11 @@ function App() {
         fetchData();
     }, []);
 
-    return coinsData === []
-        ? ''
-        : coinsData.map((coin) => {
-              return (
-                  <CoinInfo
-                      key={coin.name}
-                      logo={coin.logo_url}
-                      name={coin.name}
-                      symbol={coin.symbol}
-                      price={coin.price}
-                  ></CoinInfo>
-              );
-          });
+    return coinsData === [] ? (
+        ''
+    ) : (
+        <CoinHolder coinsData={coinsData}></CoinHolder>
+    );
 }
 
 export default App;

@@ -1,7 +1,7 @@
 import React from 'react';
 
 const styles = {
-    container: `bg-spaceCadet w-5/6 p-2`,
+    container: `p-2`,
     headerHolder: `flex items-center space-x-1`,
     coinLogo: 'w-10 h-10',
     headingText: `text-xl`,
