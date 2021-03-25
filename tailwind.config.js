@@ -9,6 +9,7 @@ module.exports = {
                 englishLavender: '#A57982',
                 spaceCadet: '#302F4d',
                 russianViolet: '#120D31',
+                white: '#f9f9f9',
             },
         },
     },

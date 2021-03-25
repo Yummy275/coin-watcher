@@ -9,7 +9,6 @@ const styles = {
 };
 
 const CoinInfo = ({ logo, name, symbol, price, intervalPercentChange }) => {
-    console.log(price);
     const parsedPrice = parseFloat(price);
     const formattedPrice = parsedPrice.toFixed(2);
 

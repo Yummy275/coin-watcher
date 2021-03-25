@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
 import getCoinsInfoFromApi from './api/getCoinsInfoFromApi';
+import Navbar from './components/Navbar';
 import CoinHolder from './components/CoinHolder';
 
 const savedCoins = {
@@ -25,13 +26,13 @@ function App() {
             const data = await getCoinsInfoFromApi(savedCoinSymbols);
             setCoinsData(data);
         };
-        fetchData();
+        //fetchData();
     }, []);
 
-    return coinsData === [] ? (
-        ''
-    ) : (
-        <CoinHolder coinsData={coinsData}></CoinHolder>
+    return (
+        <>
+            <Navbar></Navbar>
+        </>
     );
 }
 
