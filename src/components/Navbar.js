@@ -1,18 +1,29 @@
 import React, { useRef, useState } from 'react';
+import { FixedSizeList as List } from 'react-window';
 import NavCoinPreview from './NavCoinPreview';
 
 const styles = {
     navbar: `relative h-12 flex justify-center items-center bg-englishLavender`,
     searchInput: `h-3/4 rounded-md p-1 bg-white`,
     searchBox:
-        'transition-all duration-1000 absolute w-60 top-12 overflow-y-scroll bg-englishLavender',
+        'transition-all duration-1000 absolute top-12 overflow-hidden bg-englishLavender',
 };
 
 const Navbar = ({ availableCoins }) => {
     const searchInput = useRef();
     const [searchBoxHidden, setSearchBoxHidden] = useState(true);
 
-    console.log(availableCoins);
+    const Row = ({ index, style }) => (
+        <div style={style}>
+            {
+                <NavCoinPreview
+                    logo={availableCoins[index].logo_url}
+                    id={availableCoins[index].id}
+                    name={availableCoins[index].name}
+                ></NavCoinPreview>
+            }
+        </div>
+    );
 
     return (
         <div className={styles.navbar}>
@@ -32,30 +43,14 @@ const Navbar = ({ availableCoins }) => {
                     ''
                 ) : (
                     <>
-                        <NavCoinPreview
-                            key={availableCoins[0].id}
-                            logo={availableCoins[0].logo_url}
-                            id={availableCoins[0].id}
-                            name={availableCoins[0].name}
-                        ></NavCoinPreview>
-                        <NavCoinPreview
-                            key={availableCoins[1].id}
-                            logo={availableCoins[1].logo_url}
-                            id={availableCoins[1].id}
-                            name={availableCoins[1].name}
-                        ></NavCoinPreview>
-                        <NavCoinPreview
-                            key={availableCoins[2].id}
-                            logo={availableCoins[2].logo_url}
-                            id={availableCoins[2].id}
-                            name={availableCoins[2].name}
-                        ></NavCoinPreview>
-                        <NavCoinPreview
-                            key={availableCoins[3].id}
-                            logo={availableCoins[3].logo_url}
-                            id={availableCoins[3].id}
-                            name={availableCoins[3].name}
-                        ></NavCoinPreview>
+                        <List
+                            height={400}
+                            itemCount={1000}
+                            itemSize={80}
+                            width={320}
+                        >
+                            {Row}
+                        </List>
                     </>
                 )}
             </div>

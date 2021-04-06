@@ -36,6 +36,7 @@ function App() {
         const fetchAvailableCoins = async () => {
             const data = await getAvailableCoins();
             console.log('fetching available coins');
+            console.log(data);
             const filteredArr = [];
             data.forEach((coin) => {
                 if (coin.logo_url != '') {

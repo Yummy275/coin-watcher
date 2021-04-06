@@ -1,11 +1,11 @@
 import React from 'react';
 
 const styles = {
-    container: 'flex ml-3 my-2',
+    container: 'ml-2 flex',
     logo: 'h-12 w-12',
     textHolder: 'ml-1',
-    id: 'text-sm',
-    name: 'text-base',
+    id: 'text-xs',
+    name: 'text-sm',
 };
 
 const NavCoinPreview = ({ logo, id, name }) => {
