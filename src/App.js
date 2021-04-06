@@ -4,12 +4,9 @@ import getCoinsInfoFromApi from './api/getCoinsInfoFromApi';
 import getAvailableCoins from './api/getAvailableCoins';
 import Navbar from './components/Navbar';
 import CoinHolder from './components/CoinHolder';
+import NoSavedCoinsSign from './components/NoSavedCoinsSign';
 
-//will be loaded from local storage
-const savedCoins = {
-    btc: { symbol: 'BTC', amount: '12.03' },
-    eth: { symbol: 'ETH', amount: '1' },
-};
+const savedCoins = localStorage.getItem('savedCoins');
 
 const getSavedCoinsSymbols = () => {
     const symbols = [];
@@ -25,9 +22,14 @@ function App() {
 
     useEffect(() => {
         const fetchSavedCoinsData = async () => {
-            const savedCoinSymbols = getSavedCoinsSymbols();
-            const data = await getCoinsInfoFromApi(savedCoinSymbols);
-            setSavedCoinsData(data);
+            console.log('fetching saved data');
+            if (savedCoins === null) {
+                setSavedCoinsData('none');
+            } else {
+                const savedCoinSymbols = getSavedCoinsSymbols();
+                const data = await getCoinsInfoFromApi(savedCoinSymbols);
+                setSavedCoinsData(data);
+            }
         };
         fetchSavedCoinsData();
     }, []);
@@ -51,7 +53,11 @@ function App() {
     return (
         <>
             <Navbar availableCoins={availableCoins}></Navbar>
-            <CoinHolder coinsData={savedCoinsData}></CoinHolder>
+            {savedCoins === null ? (
+                <NoSavedCoinsSign></NoSavedCoinsSign>
+            ) : (
+                <CoinHolder coinsData={savedCoinsData}></CoinHolder>
+            )}
         </>
     );
 }
