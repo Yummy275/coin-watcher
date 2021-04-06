@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
 import getCoinsInfoFromApi from './api/getCoinsInfoFromApi';
+import getAvailableCoins from './api/getAvailableCoins';
 import Navbar from './components/Navbar';
 import CoinHolder from './components/CoinHolder';
 
+//will be loaded from local storage
 const savedCoins = {
     btc: { symbol: 'BTC', amount: '12.03' },
     eth: { symbol: 'ETH', amount: '1' },
@@ -18,20 +20,36 @@ const getSavedCoinsSymbols = () => {
 };
 
 function App() {
-    const [coinsData, setCoinsData] = useState([]);
+    const [savedCoinsData, setSavedCoinsData] = useState([]);
+    const [availableCoins, setAvailableCoins] = useState([]);
 
     useEffect(() => {
-        const fetchData = async () => {
+        const fetchSavedCoinData = async () => {
             const savedCoinSymbols = getSavedCoinsSymbols();
             const data = await getCoinsInfoFromApi(savedCoinSymbols);
-            setCoinsData(data);
+            setSavedCoinsData(data);
         };
-        //fetchData();
+        //fetchSavedCoinsData();
+    }, []);
+
+    useEffect(() => {
+        const fetchAvailableCoins = async () => {
+            const data = await getAvailableCoins();
+            console.log('fetching available coins');
+            const filteredArr = [];
+            data.forEach((coin) => {
+                if (coin.logo_url != '') {
+                    filteredArr.push(coin);
+                }
+            });
+            setAvailableCoins(filteredArr);
+        };
+        fetchAvailableCoins();
     }, []);
 
     return (
         <>
-            <Navbar></Navbar>
+            <Navbar availableCoins={availableCoins}></Navbar>
         </>
     );
 }
