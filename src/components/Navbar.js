@@ -44,7 +44,7 @@ const Navbar = ({ availableCoins }) => {
                 ) : (
                     <>
                         <List
-                            height={394}
+                            height={400}
                             itemCount={1000}
                             itemSize={80}
                             width={320}

@@ -2,7 +2,7 @@ import React from 'react';
 import CoinInfo from './CoinInfo';
 
 const styles = {
-    container: `flex flex-wrap w-100 justify-evenly bg-spaceCadet space-x-2`,
+    container: `flex flex-wrap w-100 justify-flex-start bg-spaceCadet`,
 };
 
 const CoinHolder = ({ coinsData }) => {

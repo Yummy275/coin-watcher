@@ -24,12 +24,12 @@ function App() {
     const [availableCoins, setAvailableCoins] = useState([]);
 
     useEffect(() => {
-        const fetchSavedCoinData = async () => {
+        const fetchSavedCoinsData = async () => {
             const savedCoinSymbols = getSavedCoinsSymbols();
             const data = await getCoinsInfoFromApi(savedCoinSymbols);
             setSavedCoinsData(data);
         };
-        //fetchSavedCoinsData();
+        fetchSavedCoinsData();
     }, []);
 
     useEffect(() => {
@@ -51,6 +51,7 @@ function App() {
     return (
         <>
             <Navbar availableCoins={availableCoins}></Navbar>
+            <CoinHolder coinsData={savedCoinsData}></CoinHolder>
         </>
     );
 }

@@ -4,8 +4,8 @@ const styles = {
     container: `p-2`,
     headerHolder: `flex items-center space-x-1`,
     coinLogo: 'w-10 h-10',
-    headingText: `text-xl`,
-    coinPriceInfoHolder: ``,
+    headingText: `text-base`,
+    coinPriceInfoHolder: `text-sm`,
 };
 
 const CoinInfo = ({ logo, name, symbol, price, intervalPercentChange }) => {
@@ -15,9 +15,9 @@ const CoinInfo = ({ logo, name, symbol, price, intervalPercentChange }) => {
     return (
         <div className={styles.container}>
             <div className={styles.headerHolder}>
-                <h2 className={styles.headingText}>
+                <p className={styles.headingText}>
                     {name} ({symbol})
-                </h2>
+                </p>
                 <img
                     alt="Coin logo"
                     src={logo}
