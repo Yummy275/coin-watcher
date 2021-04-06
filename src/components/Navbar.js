@@ -36,7 +36,7 @@ const Navbar = ({ availableCoins }) => {
             ></input>
             <div
                 className={`${styles.searchBox} ${
-                    searchBoxHidden ? 'h-0' : 'h-48'
+                    searchBoxHidden ? 'h-0' : 'h-80'
                 }`}
             >
                 {availableCoins.length === 0 ? (
@@ -44,7 +44,7 @@ const Navbar = ({ availableCoins }) => {
                 ) : (
                     <>
                         <List
-                            height={400}
+                            height={394}
                             itemCount={1000}
                             itemSize={80}
                             width={320}
