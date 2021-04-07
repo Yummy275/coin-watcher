@@ -9,6 +9,7 @@ const CoinHolder = ({ coinsData }) => {
     return (
         <div className={styles.container}>
             {coinsData.map((coin) => {
+                console.log(coin.name);
                 return (
                     <CoinInfo
                         key={coin.name}

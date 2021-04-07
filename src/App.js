@@ -2,23 +2,31 @@ import React, { useState, useEffect } from 'react';
 import './App.css';
 import getCoinsInfoFromApi from './api/getCoinsInfoFromApi';
 import getAvailableCoins from './api/getAvailableCoins';
+import loadSavedCoins from './data/loadSavedCoins';
+import getSavedCoinSymbols from './data/getSavedCoinSymbols';
 import Navbar from './components/Navbar';
 import CoinHolder from './components/CoinHolder';
 import NoSavedCoinsSign from './components/NoSavedCoinsSign';
+import LoadingBalls from './components/LoadingBalls';
 import AddCoinModal from './components/AddCoinModal';
 
+const currentCoins = loadSavedCoins();
+
 function App() {
-    const [savedCoinsData, setSavedCoinsData] = useState('none');
+    const [savedCoinsData, setSavedCoinsData] = useState('loading');
     const [availableCoins, setAvailableCoins] = useState([]);
     const [newCoinSymbol, setNewCoinSymbol] = useState('');
 
     useEffect(() => {
         const fetchSavedCoinsData = async () => {
-            const savedCoins = localStorage.getItem('savedCoins');
             console.log('fetching saved data');
-            if (savedCoins === null) {
-                setSavedCoinsData('none');
+            if (currentCoins !== null) {
+                const savedCoinSymbols = getSavedCoinSymbols();
+                console.log(savedCoinSymbols);
+                const data = await getCoinsInfoFromApi(savedCoinSymbols);
+                setSavedCoinsData(data);
             } else {
+                setSavedCoinsData(null);
             }
         };
         fetchSavedCoinsData();
@@ -57,8 +65,10 @@ function App() {
                 availableCoins={availableCoins}
                 setNewCoinSymbol={setNewCoinSymbol}
             ></Navbar>
-            {savedCoinsData === 'none' ? (
+            {savedCoinsData === null ? (
                 <NoSavedCoinsSign></NoSavedCoinsSign>
+            ) : savedCoinsData === 'loading' ? (
+                <LoadingBalls></LoadingBalls>
             ) : (
                 <CoinHolder coinsData={savedCoinsData}></CoinHolder>
             )}

@@ -1,3 +1,5 @@
+import loadSavedCoins from './loadSavedCoins';
+
 const addNewCoin = (symbol, holdAmount) => {
     const newCoin = { symbol: symbol, holdAmount: holdAmount };
     const currentCoins = localStorage.getItem('savedCoins');
@@ -5,7 +7,7 @@ const addNewCoin = (symbol, holdAmount) => {
         const arr = [newCoin];
         localStorage.setItem('savedCoins', JSON.stringify(arr));
     } else {
-        const currentCoins = JSON.parse(localStorage.getItem('savedCoins'));
+        const currentCoins = loadSavedCoins();
         const updatedArr = [...currentCoins, newCoin];
         localStorage.setItem('savedCoins', JSON.stringify(updatedArr));
     }

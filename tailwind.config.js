@@ -2,6 +2,9 @@ module.exports = {
     purge: ['./src/**/*.{js,jsx,ts,tsx}', './public/index.html'],
     darkMode: false, // or 'media' or 'class'
     theme: {
+        borderRadius: {
+            circle: '100%',
+        },
         extend: {
             colors: {
                 pinkLace: '#F0D3F7',
