@@ -1,8 +1,13 @@
 import React from 'react';
+import coinEye from '../images/eyecoin.png';
+import ethCoin from '../images/ethcoin.png';
 
 const styles = {
-    container: 'bg-spaceCadet flex justify-center items-center',
-    wordBox: 'text-xl text-center',
+    container: 'bg-white flex flex-col justify-center items-center',
+    eyeImgDiv: 'relative flex justify-center items-center',
+    eyeOutline: '',
+    rotatingCoin: 'absolute h-28 w-28 animate-coinSpin',
+    wordBox: 'text-xl text-center bg-englishLavender p-5',
 };
 
 const NoSavedCoinsSign = () => {
@@ -11,9 +16,21 @@ const NoSavedCoinsSign = () => {
             style={{ height: 'calc(100vh - 3rem)' }}
             className={styles.container}
         >
-            <p className={styles.wordBox}>
-                Use search box above to add your coins!
-            </p>
+            <div className={styles.eyeImgDiv}>
+                <img
+                    className={styles.rotatingCoin}
+                    alt="ethcoin"
+                    src={ethCoin}
+                ></img>
+                <img
+                    className={styles.eyeOutline}
+                    src={coinEye}
+                    alt="coin eye"
+                ></img>
+            </div>
+            <div className={styles.wordBox}>
+                Search for coins using search bar above!
+            </div>
         </div>
     );
 };

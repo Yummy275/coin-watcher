@@ -49,7 +49,7 @@ const Navbar = ({ availableCoins, setNewCoinSymbol }) => {
                     <>
                         <List
                             height={400}
-                            itemCount={1000}
+                            itemCount={availableCoins.length}
                             itemSize={80}
                             width={320}
                         >

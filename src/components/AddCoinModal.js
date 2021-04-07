@@ -10,12 +10,13 @@ const styles = {
     smallTxt: 'text-xs my-1',
 };
 
-const AddCoinModal = ({ hideModal, symbol }) => {
+const AddCoinModal = ({ hideModal, symbol, updateSavedCoins }) => {
     const userInput = useRef();
 
     const AddCoin = () => {
         addNewCoin(symbol, userInput.current.value);
         hideModal();
+        updateSavedCoins();
     };
 
     return (

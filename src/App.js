@@ -17,14 +17,18 @@ function App() {
     const [availableCoins, setAvailableCoins] = useState([]);
     const [newCoinSymbol, setNewCoinSymbol] = useState('');
 
+    const updateSavedCoins = async () => {
+        const savedCoinSymbols = getSavedCoinSymbols();
+        setSavedCoinsData('loading');
+        const data = await getCoinsInfoFromApi(savedCoinSymbols);
+        setSavedCoinsData(data);
+    };
+
     useEffect(() => {
         const fetchSavedCoinsData = async () => {
             console.log('fetching saved data');
             if (currentCoins !== null) {
-                const savedCoinSymbols = getSavedCoinSymbols();
-                console.log(savedCoinSymbols);
-                const data = await getCoinsInfoFromApi(savedCoinSymbols);
-                setSavedCoinsData(data);
+                updateSavedCoins();
             } else {
                 setSavedCoinsData(null);
             }
@@ -42,10 +46,9 @@ function App() {
                     filteredArr.push(coin);
                 }
             });
-            console.log(filteredArr);
             setAvailableCoins(filteredArr);
         };
-        fetchAvailableCoins();
+        //fetchAvailableCoins();
     }, []);
 
     const hideModal = () => {
@@ -58,6 +61,7 @@ function App() {
                 <AddCoinModal
                     hideModal={hideModal}
                     symbol={newCoinSymbol}
+                    updateSavedCoins={updateSavedCoins}
                 ></AddCoinModal>
             ) : (
                 ''

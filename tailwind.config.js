@@ -15,6 +15,15 @@ module.exports = {
                 white: '#f9f9f9',
                 black: '#040F16',
             },
+            keyframes: {
+                coinSpin: {
+                    '0%': { transform: 'rotateY(0deg)' },
+                    '100%': { transform: 'rotateY(360deg)' },
+                },
+            },
+            animation: {
+                coinSpin: 'coinSpin 2s ease-in-out infinite',
+            },
         },
         inset: {
             '1/10': '10%',
