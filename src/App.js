@@ -42,6 +42,7 @@ function App() {
                     filteredArr.push(coin);
                 }
             });
+            console.log(filteredArr);
             setAvailableCoins(filteredArr);
         };
         fetchAvailableCoins();
