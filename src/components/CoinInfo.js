@@ -9,6 +9,15 @@ const styles = {
     coinPriceInfoHolder: `text-sm`,
 };
 
+const getTotalCoinWorth = (price, hold) => {
+    const worth = price * hold;
+    const round = worth.toFixed(2);
+    //because toFixed makes it a string
+    const backToNumber = Number(round);
+    const formattedWorth = backToNumber.toLocaleString(2);
+    return formattedWorth;
+};
+
 const CoinInfo = ({
     logo,
     name,
@@ -36,8 +45,7 @@ const CoinInfo = ({
             <div className={styles.coinPriceInfoHolder}>
                 <p>Hold: {hold}</p>
                 <p>@ ${formattedPrice}</p>
-                <p>{price}</p>
-                <p>{intervalPercentChange}</p>
+                <p>${getTotalCoinWorth(price, hold)}</p>
             </div>
         </div>
     );
