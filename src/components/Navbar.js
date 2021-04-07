@@ -9,7 +9,7 @@ const styles = {
         'transition-all duration-1000 absolute top-12 overflow-hidden bg-englishLavender',
 };
 
-const Navbar = ({ availableCoins }) => {
+const Navbar = ({ availableCoins, setNewCoinSymbol }) => {
     const searchInput = useRef();
     const [searchBoxHidden, setSearchBoxHidden] = useState(true);
 
@@ -20,16 +20,20 @@ const Navbar = ({ availableCoins }) => {
                     logo={availableCoins[index].logo_url}
                     id={availableCoins[index].id}
                     name={availableCoins[index].name}
+                    setNewCoinSymbol={setNewCoinSymbol}
                 ></NavCoinPreview>
             }
         </div>
     );
 
     return (
-        <div className={styles.navbar}>
+        <div
+            className={styles.navbar}
+            onMouseEnter={() => setSearchBoxHidden(false)}
+            onMouseLeave={() => setSearchBoxHidden(true)}
+        >
             <input
                 onFocus={() => setSearchBoxHidden(false)}
-                onBlur={() => setSearchBoxHidden(true)}
                 ref={searchInput}
                 className={styles.searchInput}
                 placeholder="Search"

@@ -20,6 +20,7 @@ const getSavedCoinsSymbols = () => {
 function App() {
     const [savedCoinsData, setSavedCoinsData] = useState([]);
     const [availableCoins, setAvailableCoins] = useState([]);
+    const [newCoinSymbol, setNewCoinSymbol] = useState('');
 
     useEffect(() => {
         const fetchSavedCoinsData = async () => {
@@ -32,7 +33,7 @@ function App() {
                 setSavedCoinsData(data);
             }
         };
-        //fetchSavedCoinsData();
+        fetchSavedCoinsData();
     }, []);
 
     useEffect(() => {
@@ -41,19 +42,28 @@ function App() {
             console.log('fetching available coins');
             const filteredArr = [];
             data.forEach((coin) => {
-                if (coin.logo_url != '') {
+                if (coin.logo_url !== '') {
                     filteredArr.push(coin);
                 }
             });
             setAvailableCoins(filteredArr);
         };
-        //fetchAvailableCoins();
+        fetchAvailableCoins();
     }, []);
+
+    console.log(newCoinSymbol);
 
     return (
         <>
-            <AddCoinModal></AddCoinModal>
-            <Navbar availableCoins={availableCoins}></Navbar>
+            {newCoinSymbol !== '' ? (
+                <AddCoinModal symbol={newCoinSymbol}></AddCoinModal>
+            ) : (
+                ''
+            )}
+            <Navbar
+                availableCoins={availableCoins}
+                setNewCoinSymbol={setNewCoinSymbol}
+            ></Navbar>
             {savedCoins === null ? (
                 <NoSavedCoinsSign></NoSavedCoinsSign>
             ) : (

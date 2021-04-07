@@ -10,10 +10,12 @@ module.exports = {
                 spaceCadet: '#302F4d',
                 russianViolet: '#120D31',
                 white: '#f9f9f9',
+                black: '#040F16',
             },
         },
         inset: {
             '1/10': '10%',
+            12: '3rem',
         },
     },
     variants: {

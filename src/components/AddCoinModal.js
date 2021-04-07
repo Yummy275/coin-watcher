@@ -5,7 +5,7 @@ const styles = {
     container:
         'absolute z-10 flex flex-col justify-center items-center w-4/5 h-4/5 bg-russianViolet top-1/10 left-1/10',
     question: '',
-    input: 'w-40 my-3',
+    input: 'p-1 w-40 my-3 text-black',
     smallTxt: 'text-xs my-1',
     lrTxt: 'text-md',
 };
@@ -19,7 +19,7 @@ const AddCoinModal = ({ symbol }) => {
             <p className={styles.smallTxt}>(up to 8 decimal points.)</p>
             <input
                 type="number"
-                step="0.00000001"
+                step="any"
                 min="0"
                 className={styles.input}
             ></input>
