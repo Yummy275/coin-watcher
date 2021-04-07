@@ -29,7 +29,8 @@ const NoSavedCoinsSign = () => {
                 ></img>
             </div>
             <div className={styles.wordBox}>
-                Search for coins using search bar above!
+                Looks like you have no coins! Use the search bar above to add
+                some.
             </div>
         </div>
     );
