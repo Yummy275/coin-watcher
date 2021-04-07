@@ -51,12 +51,17 @@ function App() {
         fetchAvailableCoins();
     }, []);
 
-    console.log(newCoinSymbol);
+    const hideModal = () => {
+        setNewCoinSymbol('');
+    };
 
     return (
         <>
             {newCoinSymbol !== '' ? (
-                <AddCoinModal symbol={newCoinSymbol}></AddCoinModal>
+                <AddCoinModal
+                    hideModal={hideModal}
+                    symbol={newCoinSymbol}
+                ></AddCoinModal>
             ) : (
                 ''
             )}

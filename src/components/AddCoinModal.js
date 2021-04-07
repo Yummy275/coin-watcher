@@ -1,29 +1,39 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import StdBtn from './StdBtn';
 
 const styles = {
     container:
         'absolute z-10 flex flex-col justify-center items-center w-4/5 h-4/5 bg-russianViolet top-1/10 left-1/10',
-    question: '',
+    question: 'text-center p-2 text-md',
     input: 'p-1 w-40 my-3 text-black',
     smallTxt: 'text-xs my-1',
-    lrTxt: 'text-md',
 };
 
-const AddCoinModal = ({ symbol }) => {
+const AddCoinModal = ({ hideModal, symbol }) => {
+    const userInput = useRef();
+
+    const AddCoin = () => {
+        const heldAmount = parseFloat(userInput.current.value);
+        const formattedAmount = heldAmount.toFixed(8);
+        const coinArr = [{ symbol: 'symbol', heldAmount: formattedAmount }];
+        localStorage.setItem(`${symbol}`, JSON.stringify(coinArr));
+        hideModal();
+    };
+
     return (
         <div className={styles.container}>
-            <p className={styles.lrTxt}>
+            <p className={styles.question}>
                 How many {symbol} do you currently have?
             </p>
-            <p className={styles.smallTxt}>(up to 8 decimal points.)</p>
+            <p className={styles.smallTxt}>(up to 8 decimals)</p>
             <input
+                ref={userInput}
                 type="number"
                 step="any"
                 min="0"
                 className={styles.input}
             ></input>
-            <StdBtn string="Add Coin"></StdBtn>
+            <StdBtn string="Add Coin" handleClick={AddCoin}></StdBtn>
         </div>
     );
 };
