@@ -7,30 +7,18 @@ import CoinHolder from './components/CoinHolder';
 import NoSavedCoinsSign from './components/NoSavedCoinsSign';
 import AddCoinModal from './components/AddCoinModal';
 
-const savedCoins = localStorage.getItem('savedCoins');
-
-const getSavedCoinsSymbols = () => {
-    const symbols = [];
-    for (const coin in savedCoins) {
-        symbols.push(savedCoins[coin].symbol);
-    }
-    return symbols;
-};
-
 function App() {
-    const [savedCoinsData, setSavedCoinsData] = useState([]);
+    const [savedCoinsData, setSavedCoinsData] = useState('none');
     const [availableCoins, setAvailableCoins] = useState([]);
     const [newCoinSymbol, setNewCoinSymbol] = useState('');
 
     useEffect(() => {
         const fetchSavedCoinsData = async () => {
+            const savedCoins = localStorage.getItem('savedCoins');
             console.log('fetching saved data');
             if (savedCoins === null) {
                 setSavedCoinsData('none');
             } else {
-                const savedCoinSymbols = getSavedCoinsSymbols();
-                const data = await getCoinsInfoFromApi(savedCoinSymbols);
-                setSavedCoinsData(data);
             }
         };
         fetchSavedCoinsData();
@@ -69,7 +57,7 @@ function App() {
                 availableCoins={availableCoins}
                 setNewCoinSymbol={setNewCoinSymbol}
             ></Navbar>
-            {savedCoins === null ? (
+            {savedCoinsData === 'none' ? (
                 <NoSavedCoinsSign></NoSavedCoinsSign>
             ) : (
                 <CoinHolder coinsData={savedCoinsData}></CoinHolder>

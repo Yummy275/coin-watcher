@@ -1,5 +1,6 @@
 import React, { useRef } from 'react';
 import StdBtn from './StdBtn';
+import addNewCoin from '../data/addNewCoin';
 
 const styles = {
     container:
@@ -13,10 +14,7 @@ const AddCoinModal = ({ hideModal, symbol }) => {
     const userInput = useRef();
 
     const AddCoin = () => {
-        const heldAmount = parseFloat(userInput.current.value);
-        const formattedAmount = heldAmount.toFixed(8);
-        const coinArr = [{ symbol: 'symbol', heldAmount: formattedAmount }];
-        localStorage.setItem(`${symbol}`, JSON.stringify(coinArr));
+        addNewCoin(symbol, userInput.current.value);
         hideModal();
     };
 
