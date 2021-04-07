@@ -4,7 +4,7 @@ import ethCoin from '../images/ethcoin.png';
 
 const styles = {
     container: 'bg-white flex flex-col justify-center items-center',
-    eyeImgDiv: 'relative flex justify-center items-center',
+    eyeImgDiv: 'relative flex justify-center items-center mb-20',
     eyeOutline: '',
     rotatingCoin: 'absolute h-28 w-28 animate-coinSpin',
     wordBox: 'text-xl text-center bg-englishLavender p-5',
