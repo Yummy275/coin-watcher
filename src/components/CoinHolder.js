@@ -6,6 +6,7 @@ const styles = {
 };
 
 const CoinHolder = ({ coinsData }) => {
+    console.log(coinsData);
     return (
         <div className={styles.container}>
             {coinsData.map((coin) => {

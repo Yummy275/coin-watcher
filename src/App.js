@@ -33,7 +33,7 @@ function App() {
                 setSavedCoinsData(null);
             }
         };
-        fetchSavedCoinsData();
+        setTimeout(() => fetchSavedCoinsData(), 3000);
     }, []);
 
     useEffect(() => {
@@ -42,7 +42,7 @@ function App() {
             console.log('fetching available coins');
             const filteredArr = [];
             data.forEach((coin) => {
-                if (coin.logo_url !== '') {
+                if (coin.logo_url !== '' && coin.description !== '') {
                     filteredArr.push(coin);
                 }
             });

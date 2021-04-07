@@ -27,7 +27,7 @@ const CoinInfo = ({ logo, name, symbol, price, intervalPercentChange }) => {
             <div className={styles.coinPriceInfoHolder}>
                 <p>Hold: 5</p>
                 <p>@ ${formattedPrice}</p>
-                <p>$50,000</p>
+                <p>{price}</p>
                 <p>{intervalPercentChange}</p>
             </div>
         </div>
