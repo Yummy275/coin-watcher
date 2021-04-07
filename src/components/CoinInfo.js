@@ -1,12 +1,13 @@
 import React from 'react';
+import StdBtn from './StdBtn';
 
 const styles = {
-    container: `p-2 m-4`,
+    container: `flex flex-col items-center p-2 m-4`,
     headerHolder: `flex items-center space-x-1`,
     coinLogo: 'w-10 h-10',
     smTxt: 'text-xs',
     headingText: `text-base`,
-    coinPriceInfoHolder: `text-sm mt-2`,
+    coinPriceInfoHolder: `text-sm my-2 text-center`,
 };
 
 const getTotalCoinWorth = (price, hold) => {
@@ -47,6 +48,7 @@ const CoinInfo = ({
                 <p>@ ${formattedPrice}</p>
                 <p>${getTotalCoinWorth(price, hold)}</p>
             </div>
+            <StdBtn string="Edit" size="16"></StdBtn>
         </div>
     );
 };
