@@ -48,7 +48,7 @@ function App() {
             });
             setAvailableCoins(filteredArr);
         };
-        //fetchAvailableCoins();
+        fetchAvailableCoins();
     }, []);
 
     const hideModal = () => {
