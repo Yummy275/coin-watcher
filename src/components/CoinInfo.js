@@ -6,7 +6,7 @@ const styles = {
     coinLogo: 'w-10 h-10',
     smTxt: 'text-xs',
     headingText: `text-base`,
-    coinPriceInfoHolder: `text-sm`,
+    coinPriceInfoHolder: `text-sm mt-2`,
 };
 
 const getTotalCoinWorth = (price, hold) => {

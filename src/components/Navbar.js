@@ -4,14 +4,34 @@ import NavCoinPreview from './NavCoinPreview';
 
 const styles = {
     navbar: `relative h-12 flex justify-center items-center bg-englishLavender`,
-    searchInput: `h-3/4 w-56 rounded-md p-1 bg-white`,
+    searchInput: `h-3/4 w-56 rounded-md p-1 bg-white text-black`,
     searchBox:
         'transition-all z-10 duration-1000 absolute top-12 overflow-hidden bg-englishLavender',
 };
 
 const Navbar = ({ availableCoins, setNewCoinSymbol }) => {
     const searchInput = useRef();
+    const listRef = useRef();
     const [searchBoxHidden, setSearchBoxHidden] = useState(true);
+
+    const searchAvailableCoins = () => {
+        let scrollIndex = 0;
+        const inputValue = searchInput.current.value;
+        const formattedInputValue = inputValue.toLowerCase();
+        for (var i = 0; i < availableCoins.length; i++) {
+            const formattedName = availableCoins[i].name.toLowerCase();
+            if (formattedName === formattedInputValue) {
+                scrollIndex = i;
+                break;
+            } else if (
+                formattedName.startsWith(formattedInputValue) &&
+                scrollIndex === 0
+            ) {
+                scrollIndex = i;
+            }
+        }
+        listRef.current.scrollToItem(scrollIndex, 'start');
+    };
 
     const Row = ({ index, style }) => (
         <div style={style}>
@@ -36,7 +56,8 @@ const Navbar = ({ availableCoins, setNewCoinSymbol }) => {
                 onFocus={() => setSearchBoxHidden(false)}
                 ref={searchInput}
                 className={styles.searchInput}
-                placeholder="Search"
+                placeholder="Search Name"
+                onChange={searchAvailableCoins}
             ></input>
             <div
                 className={`${styles.searchBox} ${
@@ -48,6 +69,7 @@ const Navbar = ({ availableCoins, setNewCoinSymbol }) => {
                 ) : (
                     <>
                         <List
+                            ref={listRef}
                             height={400}
                             itemCount={availableCoins.length}
                             itemSize={80}
