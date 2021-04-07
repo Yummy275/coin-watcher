@@ -12,6 +12,9 @@ module.exports = {
                 white: '#f9f9f9',
             },
         },
+        inset: {
+            '1/10': '10%',
+        },
     },
     variants: {
         extend: {},

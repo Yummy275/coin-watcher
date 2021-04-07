@@ -5,6 +5,7 @@ import getAvailableCoins from './api/getAvailableCoins';
 import Navbar from './components/Navbar';
 import CoinHolder from './components/CoinHolder';
 import NoSavedCoinsSign from './components/NoSavedCoinsSign';
+import AddCoinModal from './components/AddCoinModal';
 
 const savedCoins = localStorage.getItem('savedCoins');
 
@@ -31,14 +32,13 @@ function App() {
                 setSavedCoinsData(data);
             }
         };
-        fetchSavedCoinsData();
+        //fetchSavedCoinsData();
     }, []);
 
     useEffect(() => {
         const fetchAvailableCoins = async () => {
             const data = await getAvailableCoins();
             console.log('fetching available coins');
-            console.log(data);
             const filteredArr = [];
             data.forEach((coin) => {
                 if (coin.logo_url != '') {
@@ -47,11 +47,12 @@ function App() {
             });
             setAvailableCoins(filteredArr);
         };
-        fetchAvailableCoins();
+        //fetchAvailableCoins();
     }, []);
 
     return (
         <>
+            <AddCoinModal></AddCoinModal>
             <Navbar availableCoins={availableCoins}></Navbar>
             {savedCoins === null ? (
                 <NoSavedCoinsSign></NoSavedCoinsSign>
