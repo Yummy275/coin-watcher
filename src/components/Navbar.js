@@ -41,6 +41,7 @@ const Navbar = ({ availableCoins, setNewCoinSymbol }) => {
                     id={availableCoins[index].id}
                     name={availableCoins[index].name}
                     setNewCoinSymbol={setNewCoinSymbol}
+                    setSearchBoxHidden={setSearchBoxHidden}
                 ></NavCoinPreview>
             }
         </div>

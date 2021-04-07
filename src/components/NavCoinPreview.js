@@ -8,9 +8,20 @@ const styles = {
     name: 'text-sm',
 };
 
-const NavCoinPreview = ({ logo, id, name, setNewCoinSymbol }) => {
+const NavCoinPreview = ({
+    logo,
+    id,
+    name,
+    setNewCoinSymbol,
+    setSearchBoxHidden,
+}) => {
+    const handleClick = () => {
+        setSearchBoxHidden(true);
+        setNewCoinSymbol(id);
+    };
+
     return (
-        <div className={styles.container} onClick={() => setNewCoinSymbol(id)}>
+        <div className={styles.container} onClick={handleClick}>
             <img src={logo} className={styles.logo}></img>
             <div className={styles.textHolder}>
                 <p className={styles.id}>({id})</p>
