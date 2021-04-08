@@ -31,7 +31,6 @@ const CoinHolder = ({ coinsData, updateSavedCoins }) => {
             <p className={styles.totalWorth}>Total: ${totalWorth}</p>
             <div className={styles.coinsHolder}>
                 {coinsData.map((coin) => {
-                    console.log(coin.symbol);
                     return (
                         <CoinInfo
                             key={coin.name}
