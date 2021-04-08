@@ -4,23 +4,45 @@ import getCoinsInfoFromApi from './api/getCoinsInfoFromApi';
 import getAvailableCoins from './api/getAvailableCoins';
 import loadSavedCoins from './data/loadSavedCoins';
 import getSavedCoinSymbols from './data/getSavedCoinSymbols';
+import getHoldAmount from './data/getHoldAmount';
 import Navbar from './components/Navbar';
 import CoinHolder from './components/CoinHolder';
 import NoSavedCoinsSign from './components/NoSavedCoinsSign';
 import LoadingBalls from './components/LoadingBalls';
 import AddCoinModal from './components/AddCoinModal';
+import Chart from './components/Chart';
 
 const currentCoins = loadSavedCoins();
 
 function App() {
     const [savedCoinsData, setSavedCoinsData] = useState('loading');
+    const [chartData, setChartData] = useState('');
     const [availableCoins, setAvailableCoins] = useState([]);
     const [newCoinSymbol, setNewCoinSymbol] = useState('');
+
+    const updateRatioChart = (data) => {
+        console.log(data);
+        const coinArr = [];
+        for (var i = 0; i < data.length; i++) {
+            const holdAmount = getHoldAmount(data[i].symbol);
+            const totalAmountWorth = holdAmount * data[i].price;
+            const round = totalAmountWorth.toFixed(2);
+            const backToNumber = Number(round);
+            const formattedTotalAmountWorth = backToNumber.toLocaleString();
+            const coinObject = {
+                symbol: data[i].symbol,
+                totalWorth: formattedTotalAmountWorth,
+            };
+            coinArr.push(coinObject);
+        }
+        setChartData(coinArr);
+    };
 
     const updateSavedCoins = async () => {
         const savedCoinSymbols = getSavedCoinSymbols();
         setSavedCoinsData('loading');
         const data = await getCoinsInfoFromApi(savedCoinSymbols);
+        updateRatioChart(data);
         setSavedCoinsData(data);
     };
 
@@ -75,10 +97,13 @@ function App() {
             ) : savedCoinsData === 'loading' ? (
                 <LoadingBalls></LoadingBalls>
             ) : (
-                <CoinHolder
-                    coinsData={savedCoinsData}
-                    updateSavedCoins={updateSavedCoins}
-                ></CoinHolder>
+                <>
+                    <CoinHolder
+                        coinsData={savedCoinsData}
+                        updateSavedCoins={updateSavedCoins}
+                    ></CoinHolder>
+                    <Chart data={chartData}></Chart>
+                </>
             )}
         </>
     );

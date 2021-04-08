@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import CoinInfo from './CoinInfo';
 import getHoldAmount from '../data/getHoldAmount';
 
