@@ -36,7 +36,9 @@ const CoinInfo = ({
     };
 
     const parsedPrice = parseFloat(price);
-    const formattedPrice = parsedPrice.toFixed(2);
+    const rounded = parsedPrice.toFixed(2);
+    const backToNumber = Number(rounded);
+    const formattedPrice = backToNumber.toLocaleString();
 
     return (
         <div className={styles.container}>
