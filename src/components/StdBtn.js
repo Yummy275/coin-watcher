@@ -6,7 +6,7 @@ const StdBtn = ({ string, handleClick, size }) => {
             onClick={handleClick}
             className={`${
                 size ? `w-${size}` : 'w-28'
-            } h-11 bg-englishLavender rounded border border-spaceCadet`}
+            } h-11 bg-englishLavender rounded border border-spaceCadet mb-2`}
         >
             {string}
         </button>

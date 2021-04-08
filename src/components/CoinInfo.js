@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import StdBtn from './StdBtn';
+import EditCoinModal from './EditCoinModal';
 
 const styles = {
     container: `flex flex-col items-center p-2 m-4`,
@@ -29,11 +30,21 @@ const CoinInfo = ({
 }) => {
     const [edittingCoin, setEdittingCoin] = useState(false);
 
+    const openEditModal = () => {
+        console.log('hello');
+        setEdittingCoin(true);
+    };
+
     const parsedPrice = parseFloat(price);
     const formattedPrice = parsedPrice.toFixed(2);
 
     return (
         <div className={styles.container}>
+            {edittingCoin ? (
+                <EditCoinModal symbol={symbol} hold={hold}></EditCoinModal>
+            ) : (
+                ''
+            )}
             <div className={styles.headerHolder}>
                 <img
                     alt="Coin logo"
@@ -50,7 +61,11 @@ const CoinInfo = ({
                 <p>@ ${formattedPrice}</p>
                 <p>${getTotalCoinWorth(price, hold)}</p>
             </div>
-            <StdBtn string="Edit" size="16"></StdBtn>
+            <StdBtn
+                string="Edit"
+                size="20"
+                handleClick={openEditModal}
+            ></StdBtn>
         </div>
     );
 };
