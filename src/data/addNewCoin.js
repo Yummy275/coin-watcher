@@ -1,7 +1,10 @@
 import loadSavedCoins from './loadSavedCoins';
 
 const addNewCoin = (symbol, holdAmount) => {
-    const newCoin = { symbol: symbol, holdAmount: holdAmount };
+    const holdToNumber = Number(holdAmount);
+    const rounded = holdToNumber.toFixed(8);
+    const formattedHoldAmount = Number(rounded);
+    const newCoin = { symbol: symbol, holdAmount: formattedHoldAmount };
     const currentCoins = loadSavedCoins();
     if (currentCoins === null) {
         const arr = [newCoin];

@@ -24,15 +24,17 @@ const AddCoinModal = ({ hideModal, symbol, updateSavedCoins }) => {
             <p className={styles.question}>
                 How many {symbol} do you currently have?
             </p>
-            <p className={styles.smallTxt}>(up to 8 decimals)</p>
+            <p className={styles.smallTxt}>(Up to 8 decimal points)</p>
             <input
                 ref={userInput}
                 type="number"
                 step="any"
+                maxLength="12"
                 min="0"
                 className={styles.input}
             ></input>
             <StdBtn string="Add Coin" handleClick={AddCoin}></StdBtn>
+            <StdBtn string="Cancel" handleClick={hideModal}></StdBtn>
         </div>
     );
 };
