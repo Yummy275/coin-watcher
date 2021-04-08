@@ -75,7 +75,10 @@ function App() {
             ) : savedCoinsData === 'loading' ? (
                 <LoadingBalls></LoadingBalls>
             ) : (
-                <CoinHolder coinsData={savedCoinsData}></CoinHolder>
+                <CoinHolder
+                    coinsData={savedCoinsData}
+                    updateSavedCoins={updateSavedCoins}
+                ></CoinHolder>
             )}
         </>
     );

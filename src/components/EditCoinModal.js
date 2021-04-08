@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import StdBtn from './StdBtn';
 import deleteCoin from '../data/deleteCoin';
+import updateHoldValue from '../data/updateHoldValue';
 
 const styles = {
     container:
@@ -10,10 +11,25 @@ const styles = {
     holdTxt: 'my-4 text-center',
 };
 
-const EditCoinModal = ({ symbol, hold, setViewingEditModal }) => {
+const EditCoinModal = ({
+    symbol,
+    hold,
+    setViewingEditModal,
+    updateSavedCoins,
+}) => {
+    const holdInputRef = useRef();
+
     const deleteBtnClick = () => {
         deleteCoin(symbol);
         setViewingEditModal(false);
+        updateSavedCoins();
+    };
+
+    const okayBtnClick = () => {
+        const holdValue = holdInputRef.current.value;
+        updateHoldValue(symbol, holdValue);
+        setViewingEditModal(false);
+        updateSavedCoins();
     };
 
     return (
@@ -22,6 +38,7 @@ const EditCoinModal = ({ symbol, hold, setViewingEditModal }) => {
             <p className={styles.holdTxt}>
                 Hold Amount:{' '}
                 <input
+                    ref={holdInputRef}
                     className={styles.holdInput}
                     type="number"
                     step="any"
@@ -34,7 +51,7 @@ const EditCoinModal = ({ symbol, hold, setViewingEditModal }) => {
                 size="24"
                 handleClick={deleteBtnClick}
             ></StdBtn>
-            <StdBtn string="Okay" size="24"></StdBtn>
+            <StdBtn string="Okay" size="24" handleClick={okayBtnClick}></StdBtn>
         </div>
     );
 };

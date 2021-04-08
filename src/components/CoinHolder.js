@@ -6,7 +6,7 @@ const styles = {
     container: `flex flex-wrap w-100 justify-center bg-spaceCadet`,
 };
 
-const CoinHolder = ({ coinsData }) => {
+const CoinHolder = ({ coinsData, updateSavedCoins }) => {
     return (
         <div className={styles.container}>
             {coinsData.map((coin) => {
@@ -19,6 +19,7 @@ const CoinHolder = ({ coinsData }) => {
                         symbol={coin.symbol}
                         hold={getHoldAmount(coin.symbol)}
                         price={coin.price}
+                        updateSavedCoins={updateSavedCoins}
                     ></CoinInfo>
                 );
             })}

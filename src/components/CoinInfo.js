@@ -3,7 +3,7 @@ import StdBtn from './StdBtn';
 import EditCoinModal from './EditCoinModal';
 
 const styles = {
-    container: `flex flex-col items-center p-2 m-4`,
+    container: `flex flex-col items-center p-2 my-4 mx-2`,
     headerHolder: `flex items-center space-x-1`,
     coinLogo: 'w-10 h-10',
     smTxt: 'text-xs',
@@ -27,6 +27,7 @@ const CoinInfo = ({
     hold,
     price,
     intervalPercentChange,
+    updateSavedCoins,
 }) => {
     const [viewingEditModal, setViewingEditModal] = useState(false);
 
@@ -41,6 +42,7 @@ const CoinInfo = ({
         <div className={styles.container}>
             {viewingEditModal ? (
                 <EditCoinModal
+                    updateSavedCoins={updateSavedCoins}
                     symbol={symbol}
                     hold={hold}
                     setViewingEditModal={setViewingEditModal}
