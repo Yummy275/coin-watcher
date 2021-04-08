@@ -1,7 +1,7 @@
 import React from 'react';
-import { Doughnut } from 'react-chartjs-2';
+import { Doughnut } from '@iftek/react-chartjs-3';
 
-const Chart = ({ data }) => {
+const DoughnutChart = ({ data }) => {
     const labels = [];
     const dataPoints = [];
 
@@ -12,10 +12,16 @@ const Chart = ({ data }) => {
 
     const chartData = {
         labels: labels,
-        data: dataPoints,
+        datasets: [
+            {
+                data: dataPoints,
+            },
+        ],
     };
+
+    console.log(chartData);
 
     return <Doughnut data={chartData}></Doughnut>;
 };
 
-export default Chart;
+export default DoughnutChart;

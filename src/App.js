@@ -10,7 +10,7 @@ import CoinHolder from './components/CoinHolder';
 import NoSavedCoinsSign from './components/NoSavedCoinsSign';
 import LoadingBalls from './components/LoadingBalls';
 import AddCoinModal from './components/AddCoinModal';
-import Chart from './components/Chart';
+import DoughnutChart from './components/DoughnutChart';
 
 const currentCoins = loadSavedCoins();
 
@@ -28,10 +28,9 @@ function App() {
             const totalAmountWorth = holdAmount * data[i].price;
             const round = totalAmountWorth.toFixed(2);
             const backToNumber = Number(round);
-            const formattedTotalAmountWorth = backToNumber.toLocaleString();
             const coinObject = {
                 symbol: data[i].symbol,
-                totalWorth: formattedTotalAmountWorth,
+                totalWorth: backToNumber,
             };
             coinArr.push(coinObject);
         }
@@ -102,7 +101,7 @@ function App() {
                         coinsData={savedCoinsData}
                         updateSavedCoins={updateSavedCoins}
                     ></CoinHolder>
-                    <Chart data={chartData}></Chart>
+                    <DoughnutChart data={chartData}></DoughnutChart>
                 </>
             )}
         </>
