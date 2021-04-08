@@ -28,11 +28,10 @@ const CoinInfo = ({
     price,
     intervalPercentChange,
 }) => {
-    const [edittingCoin, setEdittingCoin] = useState(false);
+    const [viewingEditModal, setViewingEditModal] = useState(false);
 
     const openEditModal = () => {
-        console.log('hello');
-        setEdittingCoin(true);
+        setViewingEditModal(true);
     };
 
     const parsedPrice = parseFloat(price);
@@ -40,8 +39,12 @@ const CoinInfo = ({
 
     return (
         <div className={styles.container}>
-            {edittingCoin ? (
-                <EditCoinModal symbol={symbol} hold={hold}></EditCoinModal>
+            {viewingEditModal ? (
+                <EditCoinModal
+                    symbol={symbol}
+                    hold={hold}
+                    setViewingEditModal={setViewingEditModal}
+                ></EditCoinModal>
             ) : (
                 ''
             )}

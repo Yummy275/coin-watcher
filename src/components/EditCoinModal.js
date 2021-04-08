@@ -1,15 +1,21 @@
 import React from 'react';
 import StdBtn from './StdBtn';
+import deleteCoin from '../data/deleteCoin';
 
 const styles = {
     container:
         'absolute z-10 flex flex-col justify-center items-center w-4/5 h-4/5 bg-russianViolet top-1/10 left-1/10',
-    holdInput: 'w-20 p-1',
+    holdInput: 'ml-2 w-36 p-1 text-black',
     lrgTxt: 'text-xl',
-    holdTxt: 'my-4',
+    holdTxt: 'my-4 text-center',
 };
 
-const EditCoinModal = ({ symbol, hold }) => {
+const EditCoinModal = ({ symbol, hold, setViewingEditModal }) => {
+    const deleteBtnClick = () => {
+        deleteCoin(symbol);
+        setViewingEditModal(false);
+    };
+
     return (
         <div className={styles.container}>
             <p className={styles.lrgTxt}> Coin: {symbol}</p>
@@ -20,11 +26,15 @@ const EditCoinModal = ({ symbol, hold }) => {
                     type="number"
                     step="any"
                     min="0"
-                    placeholder={hold}
+                    defaultValue={hold}
                 ></input>
             </p>
-            <StdBtn string="Delete" size="24"></StdBtn>
-            <StdBtn string="Apply" size="24"></StdBtn>
+            <StdBtn
+                string="Delete"
+                size="24"
+                handleClick={deleteBtnClick}
+            ></StdBtn>
+            <StdBtn string="Okay" size="24"></StdBtn>
         </div>
     );
 };
