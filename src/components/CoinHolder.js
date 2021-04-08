@@ -3,7 +3,7 @@ import CoinInfo from './CoinInfo';
 import getHoldAmount from '../data/getHoldAmount';
 
 const styles = {
-    container: `flex flex-wrap w-100 justify-flex-start bg-spaceCadet`,
+    container: `flex flex-wrap w-100 justify-center bg-spaceCadet`,
 };
 
 const CoinHolder = ({ coinsData }) => {
