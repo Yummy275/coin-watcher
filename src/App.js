@@ -21,7 +21,6 @@ function App() {
     const [newCoinSymbol, setNewCoinSymbol] = useState('');
 
     const updateRatioChart = (data) => {
-        console.log(data);
         const coinArr = [];
         for (var i = 0; i < data.length; i++) {
             const holdAmount = getHoldAmount(data[i].symbol);
@@ -101,7 +100,13 @@ function App() {
                         coinsData={savedCoinsData}
                         updateSavedCoins={updateSavedCoins}
                     ></CoinHolder>
-                    <DoughnutChart data={chartData}></DoughnutChart>
+                    <div
+                        style={{ maxWidth: '30rem' }}
+                        className="mx-auto text-center my-4"
+                    >
+                        <p className="text-2xl text-black mb-4">Coins Ratio</p>
+                        <DoughnutChart data={chartData}></DoughnutChart>
+                    </div>
                 </>
             )}
         </>

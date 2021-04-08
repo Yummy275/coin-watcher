@@ -1,10 +1,12 @@
 import React from 'react';
 import CoinInfo from './CoinInfo';
+import StdBtn from './StdBtn';
 import getHoldAmount from '../data/getHoldAmount';
 
 const styles = {
-    container: `flex flex-wrap w-100 justify-center bg-spaceCadet`,
-    totalWorth: 'text-center text-2xl bg-spaceCadet p-4',
+    mainContainer: 'flex flex-col items-center bg-spaceCadet p-4',
+    coinsHolder: `flex flex-wrap w-100 justify-center`,
+    totalWorth: 'text-2xl',
 };
 
 const CoinHolder = ({ coinsData, updateSavedCoins }) => {
@@ -25,9 +27,9 @@ const CoinHolder = ({ coinsData, updateSavedCoins }) => {
     const totalWorth = findTotalWorth();
 
     return (
-        <>
+        <div className={styles.mainContainer}>
             <p className={styles.totalWorth}>Total: ${totalWorth}</p>
-            <div className={styles.container}>
+            <div className={styles.coinsHolder}>
                 {coinsData.map((coin) => {
                     console.log(coin.symbol);
                     return (
@@ -43,7 +45,12 @@ const CoinHolder = ({ coinsData, updateSavedCoins }) => {
                     );
                 })}
             </div>
-        </>
+            <StdBtn
+                string="Update Prices"
+                size="40"
+                handleClick={updateSavedCoins}
+            ></StdBtn>
+        </div>
     );
 };
 
