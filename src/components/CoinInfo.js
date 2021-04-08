@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import StdBtn from './StdBtn';
 
 const styles = {
@@ -27,6 +27,8 @@ const CoinInfo = ({
     price,
     intervalPercentChange,
 }) => {
+    const [edittingCoin, setEdittingCoin] = useState(false);
+
     const parsedPrice = parseFloat(price);
     const formattedPrice = parsedPrice.toFixed(2);
 
