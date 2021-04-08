@@ -48,13 +48,10 @@ const Navbar = ({ availableCoins, setNewCoinSymbol }) => {
     );
 
     return (
-        <div
-            className={styles.navbar}
-            onMouseEnter={() => setSearchBoxHidden(false)}
-            onMouseLeave={() => setSearchBoxHidden(true)}
-        >
+        <div className={styles.navbar}>
             <input
                 onFocus={() => setSearchBoxHidden(false)}
+                onBlur={() => setSearchBoxHidden(true)}
                 ref={searchInput}
                 className={styles.searchInput}
                 placeholder="Search Name"

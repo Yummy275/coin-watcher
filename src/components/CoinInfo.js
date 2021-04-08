@@ -20,15 +20,7 @@ const getTotalCoinWorth = (price, hold) => {
     return formattedWorth;
 };
 
-const CoinInfo = ({
-    logo,
-    name,
-    symbol,
-    hold,
-    price,
-    intervalPercentChange,
-    updateSavedCoins,
-}) => {
+const CoinInfo = ({ logo, name, symbol, hold, price, updateSavedCoins }) => {
     const [viewingEditModal, setViewingEditModal] = useState(false);
 
     const openEditModal = () => {

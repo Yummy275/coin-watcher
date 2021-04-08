@@ -1,1 +1,1 @@
-Pick crypto currenty coins to watch price of.
+Pick cryptos to watch price and calculates total worth of those.
