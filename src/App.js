@@ -8,6 +8,7 @@ import getHoldAmount from './data/getHoldAmount';
 import Navbar from './components/Navbar';
 import CoinHolder from './components/CoinHolder';
 import NoSavedCoinsSign from './components/NoSavedCoinsSign';
+import Attribution from './components/Attribution';
 import LoadingBalls from './components/LoadingBalls';
 import AddCoinModal from './components/AddCoinModal';
 import DoughnutChart from './components/DoughnutChart';
@@ -38,16 +39,22 @@ function App() {
 
     const updateSavedCoins = async () => {
         const savedCoinSymbols = getSavedCoinSymbols();
+        console.log(savedCoinSymbols);
         setSavedCoinsData('loading');
-        const data = await getCoinsInfoFromApi(savedCoinSymbols);
-        updateRatioChart(data);
-        setSavedCoinsData(data);
+        if (savedCoinSymbols.length === 0) {
+            console.log('hello');
+            setSavedCoinsData(null);
+        } else {
+            const data = await getCoinsInfoFromApi(savedCoinSymbols);
+            updateRatioChart(data);
+            setSavedCoinsData(data);
+        }
     };
 
     useEffect(() => {
         const fetchSavedCoinsData = async () => {
             console.log('fetching saved data');
-            if (currentCoins !== null) {
+            if (currentCoins !== null && currentCoins.length !== []) {
                 updateSavedCoins();
             } else {
                 setSavedCoinsData(null);
@@ -109,6 +116,7 @@ function App() {
                     </div>
                 </>
             )}
+            <Attribution></Attribution>
         </>
     );
 }
