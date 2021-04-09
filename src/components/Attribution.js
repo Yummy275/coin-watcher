@@ -1,8 +1,8 @@
 import React from 'react';
 
 const style = {
-    bar: 'bg-spaceCadet h-16 flex justify-center items-center',
-    link: 'underline cursor-pointer',
+    bar: 'bg-spaceCadet h-16 flex justify-center items-center text-center',
+    link: 'p-1 underline cursor-pointer',
 };
 
 const Attribution = () => {
