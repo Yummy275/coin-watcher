@@ -54,7 +54,7 @@ function App() {
     useEffect(() => {
         const fetchSavedCoinsData = async () => {
             console.log('fetching saved data');
-            if (currentCoins !== null && currentCoins.length !== []) {
+            if (currentCoins !== null && currentCoins.length !== 0) {
                 updateSavedCoins();
             } else {
                 setSavedCoinsData(null);
