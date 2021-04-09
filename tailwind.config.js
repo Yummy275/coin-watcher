@@ -27,7 +27,7 @@ module.exports = {
         },
         inset: {
             '1/10': '10%',
-            12: '3rem',
+            12: '2.7rem',
         },
     },
     variants: {

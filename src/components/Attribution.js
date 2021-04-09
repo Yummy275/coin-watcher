@@ -11,6 +11,7 @@ const Attribution = () => {
             <a
                 href="https://nomics.com/"
                 target="_blank"
+                rel="noreferrer"
                 className={style.link}
             >
                 Crypto Market Cap & Pricing Data Provided By Nomics
