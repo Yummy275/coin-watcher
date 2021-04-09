@@ -8,7 +8,11 @@ const style = {
 const Attribution = () => {
     return (
         <div className={style.bar}>
-            <a className={style.link}>
+            <a
+                href="https://nomics.com/"
+                target="_blank"
+                className={style.link}
+            >
                 Crypto Market Cap & Pricing Data Provided By Nomics
             </a>
         </div>
