@@ -1,12 +1,10 @@
 import React from 'react';
 
-const StdBtn = ({ string, handleClick, size }) => {
+const StdBtn = ({ string, handleClick }) => {
     return (
         <button
             onClick={handleClick}
-            className={`${
-                size ? `w-${size}` : 'w-28'
-            } h-11 bg-englishLavender rounded border border-spaceCadet mb-2`}
+            className="h-11 bg-englishLavender rounded border border-spaceCadet py-2 px-3 mb-2"
         >
             {string}
         </button>

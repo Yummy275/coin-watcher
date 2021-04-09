@@ -60,11 +60,7 @@ const CoinInfo = ({ logo, name, symbol, hold, price, updateSavedCoins }) => {
                 <p>@ ${formattedPrice}</p>
                 <p>${getTotalCoinWorth(price, hold)}</p>
             </div>
-            <StdBtn
-                string="Edit"
-                size="20"
-                handleClick={openEditModal}
-            ></StdBtn>
+            <StdBtn string="Edit" handleClick={openEditModal}></StdBtn>
         </div>
     );
 };

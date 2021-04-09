@@ -46,7 +46,6 @@ const CoinHolder = ({ coinsData, updateSavedCoins }) => {
             </div>
             <StdBtn
                 string="Update Prices"
-                size="40"
                 handleClick={updateSavedCoins}
             ></StdBtn>
         </div>

@@ -46,12 +46,8 @@ const EditCoinModal = ({
                     defaultValue={hold}
                 ></input>
             </p>
-            <StdBtn
-                string="Delete"
-                size="24"
-                handleClick={deleteBtnClick}
-            ></StdBtn>
-            <StdBtn string="Okay" size="24" handleClick={okayBtnClick}></StdBtn>
+            <StdBtn string="Delete" handleClick={deleteBtnClick}></StdBtn>
+            <StdBtn string="Okay" handleClick={okayBtnClick}></StdBtn>
         </div>
     );
 };
