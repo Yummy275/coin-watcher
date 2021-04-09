@@ -3,7 +3,7 @@ import { FixedSizeList as List } from 'react-window';
 import NavCoinPreview from './NavCoinPreview';
 
 const styles = {
-    navbar: `relative h-12 flex justify-center items-center bg-englishLavender`,
+    navbar: `relative h-12 z-10 flex justify-center items-center bg-englishLavender`,
     searchInput: `h-3/4 w-56 rounded-md p-1 bg-white text-black`,
     searchBox:
         'transition-all z-10 duration-1000 absolute top-12 overflow-hidden bg-englishLavender',
