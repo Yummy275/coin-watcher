@@ -1,14 +1,14 @@
 {
   "files": {
-    "main.css": "/coin-watcher/static/css/main.0c6262b4.chunk.css",
-    "main.js": "/coin-watcher/static/js/main.d280fb02.chunk.js",
-    "main.js.map": "/coin-watcher/static/js/main.d280fb02.chunk.js.map",
+    "main.css": "/coin-watcher/static/css/main.0f72f763.chunk.css",
+    "main.js": "/coin-watcher/static/js/main.1ef9cb2d.chunk.js",
+    "main.js.map": "/coin-watcher/static/js/main.1ef9cb2d.chunk.js.map",
     "runtime-main.js": "/coin-watcher/static/js/runtime-main.5c5a63eb.js",
     "runtime-main.js.map": "/coin-watcher/static/js/runtime-main.5c5a63eb.js.map",
     "static/js/2.17caf3bf.chunk.js": "/coin-watcher/static/js/2.17caf3bf.chunk.js",
     "static/js/2.17caf3bf.chunk.js.map": "/coin-watcher/static/js/2.17caf3bf.chunk.js.map",
     "index.html": "/coin-watcher/index.html",
-    "static/css/main.0c6262b4.chunk.css.map": "/coin-watcher/static/css/main.0c6262b4.chunk.css.map",
+    "static/css/main.0f72f763.chunk.css.map": "/coin-watcher/static/css/main.0f72f763.chunk.css.map",
     "static/js/2.17caf3bf.chunk.js.LICENSE.txt": "/coin-watcher/static/js/2.17caf3bf.chunk.js.LICENSE.txt",
     "static/media/ethcoin.2b11334e.png": "/coin-watcher/static/media/ethcoin.2b11334e.png",
     "static/media/eyecoin.9a3b9641.png": "/coin-watcher/static/media/eyecoin.9a3b9641.png"
@@ -16,7 +16,7 @@
   "entrypoints": [
     "static/js/runtime-main.5c5a63eb.js",
     "static/js/2.17caf3bf.chunk.js",
-    "static/css/main.0c6262b4.chunk.css",
-    "static/js/main.d280fb02.chunk.js"
+    "static/css/main.0f72f763.chunk.css",
+    "static/js/main.1ef9cb2d.chunk.js"
   ]
 }
