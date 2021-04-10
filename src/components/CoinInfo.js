@@ -8,7 +8,8 @@ const styles = {
     coinLogo: 'w-10 h-10',
     smTxt: 'text-xs',
     headingText: `text-base`,
-    coinPriceInfoHolder: `text-sm my-2 text-center`,
+    coinPriceInfoHolder: `text-sm my-3 text-center`,
+    totalWorth: `text-xl mt-2`,
 };
 
 const getTotalCoinWorth = (price, hold) => {
@@ -58,7 +59,9 @@ const CoinInfo = ({ logo, name, symbol, hold, price, updateSavedCoins }) => {
             <div className={styles.coinPriceInfoHolder}>
                 <p>Hold: {hold}</p>
                 <p>@ ${formattedPrice}</p>
-                <p>${getTotalCoinWorth(price, hold)}</p>
+                <p className={styles.totalWorth}>
+                    ${getTotalCoinWorth(price, hold)}
+                </p>
             </div>
             <StdBtn string="Edit" handleClick={openEditModal}></StdBtn>
         </div>
