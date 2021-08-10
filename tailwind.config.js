@@ -7,13 +7,11 @@ module.exports = {
         },
         extend: {
             colors: {
-                pinkLace: '#F0D3F7',
-                operaMauve: '#B98EA7',
-                englishLavender: '#A57982',
-                spaceCadet: '#302F4d',
-                russianViolet: '#120D31',
-                white: '#f9f9f9',
-                black: '#040F16',
+                red: '#95190C',
+                purple: '#610345',
+                black: '#0C0F0A',
+                white: '#EEF4ED',
+                lightPurple: '#BC9EC1',
             },
             keyframes: {
                 coinSpin: {
@@ -24,10 +22,6 @@ module.exports = {
             animation: {
                 coinSpin: 'coinSpin 2s ease-in-out infinite',
             },
-        },
-        inset: {
-            '1/10': '10%',
-            12: '2.7rem',
         },
     },
     variants: {
