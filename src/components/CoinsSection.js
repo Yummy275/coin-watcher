@@ -1,8 +1,7 @@
 import React from 'react';
 
 const styles = {
-    mainContainer:
-        'coins-container h-full bg-lightPurpleToWhiteGradientDown w-80',
+    mainContainer: 'coins-container w-80 bg-lightPurpleToWhiteGradientDown',
 };
 
 const CoinsSection = () => {

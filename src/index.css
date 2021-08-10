@@ -3,6 +3,8 @@
 @tailwind components;
 @tailwind utilities;
 
-.coins-container {
-    height: calc(100vh - theme('spacing.16'));
+@screen md {
+    .coins-container {
+        height: calc(100vh - theme('spacing.16'));
+    }
 }
