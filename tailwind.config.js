@@ -13,6 +13,10 @@ module.exports = {
                 white: '#EEF4ED',
                 lightPurple: '#BC9EC1',
             },
+            backgroundImage: (theme) => ({
+                lightPurpleToWhiteGradientDown:
+                    'linear-gradient(to bottom, #bc9ec1, #dbafb7, #e4c6ba, #e5dfcf, #eef4ed);',
+            }),
             keyframes: {
                 coinSpin: {
                     '0%': { transform: 'rotateY(0deg)' },
