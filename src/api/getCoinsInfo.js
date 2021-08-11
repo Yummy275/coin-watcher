@@ -1,4 +1,4 @@
-const getCoinsInfoFromApi = async (coins) => {
+const getCoinsInfo = async (coins) => {
     const coinNames = coins.join(',');
     const apiKey = process.env.REACT_APP_API_KEY;
     const target = `https://api.nomics.com/v1/currencies/ticker?key=${apiKey}&ids=${coinNames}`;
@@ -7,4 +7,4 @@ const getCoinsInfoFromApi = async (coins) => {
     return data;
 };
 
-export default getCoinsInfoFromApi;
+export default getCoinsInfo;

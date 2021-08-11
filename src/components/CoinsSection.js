@@ -1,4 +1,7 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import Loading from './Loading';
+import getCoinsInfo from '../api/getCoinsInfo';
+import loadSavedCoins from '../data/loadSavedCoins';
 
 const styles = {
     mainContainer:
@@ -6,9 +9,26 @@ const styles = {
 };
 
 const CoinsSection = () => {
+    const [userCoins, setUserCoins] = useState(null);
+    const [loading, setLoading] = useState(true);
+
+    useEffect(() => {
+        const savedCoins = loadSavedCoins();
+        console.log(savedCoins);
+        if (savedCoins) {
+            console.log('user has coins');
+        }
+    }, []);
+
     return (
         <div className={styles.mainContainer}>
-            <h1>COINS</h1>
+            {loading ? (
+                <Loading />
+            ) : (
+                <>
+                    <h1>COINS</h1>
+                </>
+            )}
         </div>
     );
 };
