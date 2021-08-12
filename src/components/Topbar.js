@@ -2,6 +2,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import { FixedSizeList as List } from 'react-window';
 import SearchCoinPreview from './SearchCoinPreview';
 import getAvailableCoins from '../api/getAvailableCoins';
+import { search } from 'language-tags';
 
 const styles = {
     mainContainer: 'h-16 bg-lightPurple flex justify-center items-center',
@@ -12,12 +13,11 @@ const styles = {
 };
 
 const Topbar = () => {
-    const [searchInput, setSearchInput] = useState('');
     const [hideSearchMenu, setHideSearchMenu] = useState(true);
     const [availableCoins, setAvailableCoins] = useState([]);
     const listRef = useRef();
 
-    const searchAvailableCoins = () => {
+    const searchAvailableCoins = (searchInput) => {
         let scrollIndex = 0;
         const inputValue = searchInput;
         const formattedInputValue = inputValue.toLowerCase();
@@ -42,7 +42,11 @@ const Topbar = () => {
                 const availableCoins = await getAvailableCoins();
                 const filteredCoinsArr = [];
                 availableCoins.forEach((coin) => {
-                    if (coin.logo_url !== '' && coin.description !== '') {
+                    if (
+                        coin.logo_url !== '' &&
+                        coin.description !== '' &&
+                        coin.name !== ''
+                    ) {
                         filteredCoinsArr.push(coin);
                     }
                 });
@@ -75,7 +79,9 @@ const Topbar = () => {
                     <>
                         <input
                             className={styles.coinSearchInput}
-                            onChange={(e) => setSearchInput(e.target.value)}
+                            onChange={(e) => {
+                                searchAvailableCoins(e.target.value);
+                            }}
                             onFocus={() => setHideSearchMenu(false)}
                             onBlur={() => setHideSearchMenu(true)}
                         />
