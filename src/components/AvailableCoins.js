@@ -14,7 +14,9 @@ const AvailableCoins = ({ availableCoins, setHideSearchMenu, hiding }) => {
     const SearchCoinListTemplate = ({ index, style }) => (
         <div
             style={style}
-            className={`${index % 2 === 0 ? 'bg-white' : 'bg-whitePurple'}`}
+            className={`${
+                index % 2 === 0 ? 'bg-white' : 'bg-whitePurple'
+            } cursor-pointer`}
         >
             <SearchCoinPreview
                 logo={availableCoins[index].logo_url}

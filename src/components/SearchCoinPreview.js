@@ -1,7 +1,7 @@
 import React from 'react';
 
 const styles = {
-    container: 'cursor-pointer flex h-full p-2 items-center',
+    container: 'flex h-full p-2 items-center',
     logo: 'h-12 w-12',
     textHolder: 'ml-1',
     id: 'text-xs',

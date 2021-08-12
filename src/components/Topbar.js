@@ -1,9 +1,11 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import getAvailableCoins from '../api/getAvailableCoins';
 import AvailableCoins from './AvailableCoins';
+import Loading from './Loading';
 
 const styles = {
-    mainContainer: 'h-16 bg-lightPurple flex justify-center items-center',
+    mainContainer:
+        'h-16 w-full bg-lightPurple flex justify-center items-center',
     contentContainer: 'flex flex-col items-center relative',
 };
 
@@ -38,6 +40,8 @@ const Topbar = () => {
             <div className={styles.contentContainer}>
                 {availableCoins === null ? (
                     <h2>Error loading available coins</h2>
+                ) : availableCoins.length === 0 ? (
+                    <Loading coinOnly />
                 ) : (
                     <AvailableCoins
                         availableCoins={availableCoins}
