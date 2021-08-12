@@ -2,7 +2,6 @@ import React, { useState, useRef, useEffect } from 'react';
 import { FixedSizeList as List } from 'react-window';
 import SearchCoinPreview from './SearchCoinPreview';
 import getAvailableCoins from '../api/getAvailableCoins';
-import { search } from 'language-tags';
 
 const styles = {
     mainContainer: 'h-16 bg-lightPurple flex justify-center items-center',
@@ -59,14 +58,15 @@ const Topbar = () => {
     }, []);
 
     const SearchCoinListTemplate = ({ index, style }) => (
-        <div style={style}>
-            {
-                <SearchCoinPreview
-                    logo={availableCoins[index].logo_url}
-                    id={availableCoins[index].id}
-                    name={availableCoins[index].name}
-                />
-            }
+        <div
+            style={style}
+            className={`${index % 2 === 0 ? 'bg-white' : 'bg-whitePurple'}`}
+        >
+            <SearchCoinPreview
+                logo={availableCoins[index].logo_url}
+                id={availableCoins[index].id}
+                name={availableCoins[index].name}
+            />
         </div>
     );
 
@@ -88,8 +88,8 @@ const Topbar = () => {
                         <div
                             className={`${styles.searchMenu} ${
                                 hideSearchMenu
-                                    ? 'h-0 opacity-0'
-                                    : 'h-96 opacity-100'
+                                    ? 'h-0 opacity-0 pointer-events-none'
+                                    : 'h-96 opacity-100 pointer-events-auto'
                             }`}
                         >
                             <List
