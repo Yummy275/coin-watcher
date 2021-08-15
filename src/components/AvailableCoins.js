@@ -22,6 +22,7 @@ const AvailableCoins = ({ availableCoins, setHideSearchMenu, hiding }) => {
                 logo={availableCoins[index].logo_url}
                 id={availableCoins[index].id}
                 name={availableCoins[index].name}
+                description={availableCoins[index].description}
             />
         </div>
     );
