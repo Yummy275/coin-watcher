@@ -1,5 +1,4 @@
-import React, { useState } from 'react';
-import AddCoinModal from './AddCoinModal';
+import React from 'react';
 
 const styles = {
     container: 'flex h-full p-2 items-center',
@@ -9,9 +8,7 @@ const styles = {
     name: 'text-sm',
 };
 
-const SearchCoinPreview = ({ logo, id, name, description }) => {
-    const [showAddCoinModal, setShowAddCoinModal] = useState(false);
-
+const SearchCoinPreview = ({ logo, id, name }) => {
     return (
         <div className={styles.container}>
             <img src={logo} alt="coin-logo" className={styles.logo}></img>

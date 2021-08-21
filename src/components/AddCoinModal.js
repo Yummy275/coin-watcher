@@ -6,7 +6,7 @@ const styles = {
     contentContainer: '',
 };
 
-const AddCoinModal = ({ logo, id, name }) => {
+const AddCoinModal = ({ logo, id, name, description }) => {
     return (
         <div className={styles.blurredBg}>
             <div className={styles.contentContainer}>
