@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import getAvailableCoins from '../api/getAvailableCoins';
 import AvailableCoins from './AvailableCoins';
-import Loading from './Loading';
 
 const styles = {
     mainContainer:

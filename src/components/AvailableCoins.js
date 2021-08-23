@@ -1,6 +1,7 @@
 import React, { useRef } from 'react';
 import { FixedSizeList as List } from 'react-window';
 import SearchCoinPreview from './SearchCoinPreview';
+import Loading from './Loading';
 
 const styles = {
     coinSearchInput: 'p-1 bg-white rounded-t focus:outline-none',
@@ -16,9 +17,14 @@ const AvailableCoins = ({
 }) => {
     const listRef = useRef();
 
+    const coinPreviewClick = (coin) => {
+        setHideSearchMenu(true);
+        setAddingCoinData(coin);
+    };
+
     const SearchCoinListTemplate = ({ index, style }) => (
         <div
-            onClick={() => setAddingCoinData(availableCoins[index])}
+            onClick={() => coinPreviewClick(availableCoins[index])}
             style={style}
             className={`${
                 index % 2 === 0 ? 'bg-white' : 'bg-whitePurple'
@@ -68,15 +74,19 @@ const AvailableCoins = ({
                         : 'h-96 opacity-100 pointer-events-auto'
                 }`}
             >
-                <List
-                    ref={listRef}
-                    height={380}
-                    itemCount={availableCoins.length}
-                    itemSize={80}
-                    width={310}
-                >
-                    {SearchCoinListTemplate}
-                </List>
+                {availableCoins.length === 0 ? (
+                    <Loading />
+                ) : (
+                    <List
+                        ref={listRef}
+                        height={380}
+                        itemCount={availableCoins.length}
+                        itemSize={80}
+                        width={310}
+                    >
+                        {SearchCoinListTemplate}
+                    </List>
+                )}
             </div>
         </>
     );

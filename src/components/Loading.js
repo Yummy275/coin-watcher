@@ -3,8 +3,8 @@ import ethCoin from '../images/ethcoin.png';
 
 const styles = {
     mainContainer: 'h-64 flex justify-center',
-    eye: 'bg-eyeOutline bg-contain bg-center bg-no-repeat w-60 z-40 flex items-center justify-center',
-    ethCoin: 'absolute w-12 z-50 animate-coinSpin',
+    eye: 'bg-eyeOutline bg-contain bg-center bg-no-repeat w-60 flex items-center justify-center',
+    ethCoin: 'absolute w-12 animate-coinSpin',
 };
 
 const Loading = () => {
