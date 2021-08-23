@@ -8,3 +8,7 @@
         height: calc(100vh - theme('spacing.16'));
     }
 }
+
+.blurredBg {
+    backdrop-filter: blur(4px);
+}

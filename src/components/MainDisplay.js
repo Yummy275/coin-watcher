@@ -9,7 +9,7 @@ const MainDisplay = () => {
     return (
         <>
             {addingCoinData ? <AddCoinModal coinData={addingCoinData} /> : ''}
-            <Topbar />
+            <Topbar setAddingCoinData={setAddingCoinData} />
             <div className="md:flex">
                 <CoinsSection />
             </div>

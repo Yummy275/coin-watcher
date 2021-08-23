@@ -2,11 +2,12 @@ import React from 'react';
 
 const styles = {
     blurredBg:
-        'd-flex justify-center items-center w-screen h-screen absolute blur',
+        'blurredBg d-flex justify-center items-center w-screen h-screen absolute z-10',
     contentContainer: '',
 };
 
-const AddCoinModal = ({ logo, id, name, description }) => {
+const AddCoinModal = ({ coinData }) => {
+    console.log(coinData);
     return (
         <div className={styles.blurredBg}>
             <div className={styles.contentContainer}>

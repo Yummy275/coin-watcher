@@ -1,22 +1,22 @@
 import React from 'react';
 import ethCoin from '../images/ethcoin.png';
-import eye from '../images/eye.png';
 
 const styles = {
-    mainContainer: 'relative h-64 flex items-center justify-center',
-    eye: 'absolute w-60 z-40',
+    mainContainer: 'h-64 flex justify-center',
+    eye: 'bg-eyeOutline bg-contain bg-center bg-no-repeat w-60 z-40 flex items-center justify-center',
     ethCoin: 'absolute w-12 z-50 animate-coinSpin',
 };
 
-const Loading = ({ coinOnly }) => {
+const Loading = () => {
     return (
         <div className={styles.mainContainer}>
-            <img
-                className={`${styles.eye} ${coinOnly ? 'hidden' : ''}`}
-                src={eye}
-                alt="loading eye"
-            />
-            <img className={styles.ethCoin} src={ethCoin} alt="loading coin" />
+            <div className={`${styles.eye}`}>
+                <img
+                    className={styles.ethCoin}
+                    src={ethCoin}
+                    alt="loading coin"
+                />
+            </div>
         </div>
     );
 };

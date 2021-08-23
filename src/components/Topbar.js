@@ -9,7 +9,7 @@ const styles = {
     contentContainer: 'flex flex-col items-center relative',
 };
 
-const Topbar = () => {
+const Topbar = ({ setAddingCoinData }) => {
     const [hideSearchMenu, setHideSearchMenu] = useState(true);
     const [availableCoins, setAvailableCoins] = useState([]);
 
@@ -40,11 +40,10 @@ const Topbar = () => {
             <div className={styles.contentContainer}>
                 {availableCoins === null ? (
                     <h2>Error loading available coins</h2>
-                ) : availableCoins.length === 0 ? (
-                    <Loading coinOnly />
                 ) : (
                     <AvailableCoins
                         availableCoins={availableCoins}
+                        setAddingCoinData={setAddingCoinData}
                         hiding={hideSearchMenu}
                         setHideSearchMenu={setHideSearchMenu}
                     />

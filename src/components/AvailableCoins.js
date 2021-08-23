@@ -8,11 +8,17 @@ const styles = {
         'absolute w-full bg-white top-8 rounded-b transition-all duration-200 linear',
 };
 
-const AvailableCoins = ({ availableCoins, setHideSearchMenu, hiding }) => {
+const AvailableCoins = ({
+    availableCoins,
+    setAddingCoinData,
+    setHideSearchMenu,
+    hiding,
+}) => {
     const listRef = useRef();
 
     const SearchCoinListTemplate = ({ index, style }) => (
         <div
+            onClick={() => setAddingCoinData(availableCoins[index])}
             style={style}
             className={`${
                 index % 2 === 0 ? 'bg-white' : 'bg-whitePurple'
@@ -52,10 +58,10 @@ const AvailableCoins = ({ availableCoins, setHideSearchMenu, hiding }) => {
                 onChange={(e) => {
                     searchAvailableCoins(e.target.value);
                 }}
-                onFocus={() => setHideSearchMenu(false)}
-                onBlur={() => setHideSearchMenu(true)}
+                onClick={() => setHideSearchMenu(false)}
             />
             <div
+                onMouseLeave={() => setHideSearchMenu(true)}
                 className={`${styles.searchMenu} ${
                     hiding
                         ? 'h-0 opacity-0 pointer-events-none'
