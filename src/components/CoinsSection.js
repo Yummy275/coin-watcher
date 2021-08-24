@@ -5,6 +5,7 @@ import UserCoinTickerInfo from './UserCoinTickerInfo';
 const styles = {
     mainContainer:
         'coins-container w-full md:w-2/5 bg-lightPurpleToWhiteGradientDown',
+    userCoins: 'flex flex-wrap',
 };
 
 const CoinsSection = ({ userCoinsTickerData, loadingData }) => {
@@ -17,7 +18,7 @@ const CoinsSection = ({ userCoinsTickerData, loadingData }) => {
                     {userCoinsTickerData === null ? (
                         <h1>No coins found</h1>
                     ) : (
-                        <div>
+                        <div className={styles.userCoins}>
                             {userCoinsTickerData.map((coin) => (
                                 <UserCoinTickerInfo
                                     coinInfo={coin}

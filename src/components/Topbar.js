@@ -33,7 +33,8 @@ const Topbar = ({ setAddingCoinData, userCoinsInfoStillLoading }) => {
             }
         };
 
-        //use timeout to make sure at least 2 seconds pass
+        //checks to make sure done loading user coin info
+        //and uses timeout to make sure at least 2 seconds pass
         //nomics API will deny requests if request too fast
         if (!userCoinsInfoStillLoading) {
             setTimeout(() => getCoins(), 2000);
