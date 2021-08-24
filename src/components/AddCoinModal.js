@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import addNewCoin from '../data/addNewCoin';
 
 const styles = {
     blurredBg:
@@ -9,14 +10,19 @@ const styles = {
     logo: 'w-28 my-2 mx-auto',
     description: 'text-sm text-center h-56 overflow-auto',
     holdAmtInput: 'p-1 mt-2',
-    btnsContainer: 'flex justify-evenly mt-5',
+    btnsContainer: 'flex justify-evenly mt-4',
     btn: 'bg-whitePurple py-1 px-2 rounded',
 };
 
 const AddCoinModal = ({ coinData, closeModal }) => {
     const [holdVal, setHoldValue] = useState(null);
 
-    const AddCoin = () => {};
+    const addCoin = () => {
+        if (holdVal !== 0 || holdVal !== null) {
+            addNewCoin(coinData.id, holdVal);
+            closeModal();
+        }
+    };
 
     return (
         <div className={styles.blurredBg}>
@@ -35,9 +41,12 @@ const AddCoinModal = ({ coinData, closeModal }) => {
                     placeholder="Hold amount"
                     type="number"
                     step="any"
+                    onChange={(e) => setHoldValue(e.target.value)}
                 />
                 <div className={styles.btnsContainer}>
-                    <button className={styles.btn}>Add Coin</button>
+                    <button className={styles.btn} onClick={addCoin}>
+                        Add Coin
+                    </button>
                     <button className={styles.btn} onClick={closeModal}>
                         Close
                     </button>
