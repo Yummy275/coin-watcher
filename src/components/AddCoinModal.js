@@ -14,12 +14,13 @@ const styles = {
     btn: 'bg-whitePurple py-1 px-2 rounded',
 };
 
-const AddCoinModal = ({ coinData, closeModal }) => {
+const AddCoinModal = ({ coinData, closeModal, updateUserCoins }) => {
     const [holdVal, setHoldValue] = useState(null);
 
     const addCoin = () => {
         if (holdVal !== 0 || holdVal !== null) {
             addNewCoin(coinData.id, holdVal);
+            updateUserCoins();
             closeModal();
         }
     };
