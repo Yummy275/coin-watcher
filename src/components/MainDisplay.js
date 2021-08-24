@@ -8,7 +8,14 @@ const MainDisplay = () => {
 
     return (
         <>
-            {addingCoinData ? <AddCoinModal coinData={addingCoinData} /> : ''}
+            {addingCoinData ? (
+                <AddCoinModal
+                    coinData={addingCoinData}
+                    closeModal={() => setAddingCoinData(null)}
+                />
+            ) : (
+                ''
+            )}
             <Topbar setAddingCoinData={setAddingCoinData} />
             <div className="md:flex">
                 <CoinsSection />
