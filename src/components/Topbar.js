@@ -8,7 +8,7 @@ const styles = {
     contentContainer: 'flex flex-col items-center relative',
 };
 
-const Topbar = ({ setAddingCoinData }) => {
+const Topbar = ({ setAddingCoinData, userCoinsInfoStillLoading }) => {
     const [hideSearchMenu, setHideSearchMenu] = useState(true);
     const [availableCoins, setAvailableCoins] = useState([]);
 
@@ -28,11 +28,17 @@ const Topbar = ({ setAddingCoinData }) => {
                 });
                 setAvailableCoins(filteredCoinsArr);
             } catch (e) {
+                alert('Error getting available coins');
                 setAvailableCoins(null);
             }
         };
-        getCoins();
-    }, []);
+
+        //use timeout to make sure at least 2 seconds pass
+        //nomics API will deny requests if request too fast
+        if (!userCoinsInfoStillLoading) {
+            setTimeout(() => getCoins(), 2000);
+        }
+    }, [userCoinsInfoStillLoading]);
 
     return (
         <div className={styles.mainContainer}>

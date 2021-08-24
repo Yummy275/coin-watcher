@@ -1,24 +1,38 @@
 import React, { useState, useEffect } from 'react';
 import Topbar from './Topbar';
-import CoinsSection from './CoinsSection';
 import AddCoinModal from './AddCoinModal';
+import UsersCoinInformation from './UserCoinsInformation';
 import loadSavedCoins from '../data/loadSavedCoins';
+import getSavedCoinSymbols from '../data/getSavedCoinSymbols';
+import getCoinsInfo from '../api/getCoinsInfo';
 
 const MainDisplay = () => {
     const [addingCoinData, setAddingCoinData] = useState(null);
-    const [userCoins, setUserCoins] = useState([]);
+    const [userCoinsTickerData, setUserCoinsTickerData] = useState([]);
+    const [loading, setLoading] = useState(true);
 
-    useEffect(() => {
+    const updateUserCoins = async () => {
         const savedCoins = loadSavedCoins();
         if (savedCoins) {
-            setUserCoins(savedCoins);
+            const coinSymbols = getSavedCoinSymbols();
+            try {
+                const coinTickerData = await getCoinsInfo(coinSymbols);
+                setUserCoinsTickerData(coinTickerData);
+            } catch (error) {
+                alert('Error getting coin information. Reload.');
+                setUserCoinsTickerData(null);
+            }
         }
-    }, []);
-
-    const updateUserCoins = () => {
-        const savedCoins = loadSavedCoins();
-        setUserCoins(savedCoins);
     };
+
+    useEffect(() => {
+        const initialLoad = async () => {
+            await updateUserCoins();
+            setLoading(false);
+        };
+
+        initialLoad();
+    }, []);
 
     return (
         <>
@@ -31,10 +45,14 @@ const MainDisplay = () => {
             ) : (
                 ''
             )}
-            <Topbar setAddingCoinData={setAddingCoinData} />
-            <div className="md:flex">
-                <CoinsSection userCoins={userCoins} />
-            </div>
+            <Topbar
+                setAddingCoinData={setAddingCoinData}
+                userCoinsInfoStillLoading={loading}
+            />
+            <UsersCoinInformation
+                userCoinsTickerData={userCoinsTickerData}
+                loadingData={loading}
+            />
         </>
     );
 };

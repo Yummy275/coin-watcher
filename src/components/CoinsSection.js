@@ -1,20 +1,31 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import Loading from './Loading';
-import getCoinsInfo from '../api/getCoinsInfo';
+import UserCoinTickerInfo from './UserCoinTickerInfo';
 
 const styles = {
     mainContainer:
         'coins-container w-full md:w-2/5 bg-lightPurpleToWhiteGradientDown',
 };
 
-const CoinsSection = ({ userCoins, userCoinsLoading }) => {
+const CoinsSection = ({ userCoinsTickerData, loadingData }) => {
     return (
         <div className={styles.mainContainer}>
-            {userCoinsLoading ? (
+            {loadingData ? (
                 <Loading />
             ) : (
                 <>
-                    <h1>I HAVE {userCoins.length} COINS!</h1>
+                    {userCoinsTickerData === null ? (
+                        <h1>No coins found</h1>
+                    ) : (
+                        <div>
+                            {userCoinsTickerData.map((coin) => (
+                                <UserCoinTickerInfo
+                                    coinInfo={coin}
+                                    key={coin.id}
+                                />
+                            ))}
+                        </div>
+                    )}
                 </>
             )}
         </div>
