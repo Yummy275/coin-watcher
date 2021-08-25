@@ -1,5 +1,6 @@
 import React from 'react';
 import DoughnutChart from './DoughnutChart';
+import Attribution from './Attribution';
 import getHoldAmount from '../data/getHoldAmount';
 
 const styles = {
@@ -41,6 +42,7 @@ const ChartAndTotalValue = ({ userCoinsTickerData }) => {
         <div className={styles.mainContainer}>
             <h1 className={styles.totalValue}>${findTotalWorth()}</h1>
             <DoughnutChart data={chartData(userCoinsTickerData)} />
+            <Attribution />
         </div>
     );
 };
