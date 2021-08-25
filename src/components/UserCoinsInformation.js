@@ -1,5 +1,6 @@
 import React from 'react';
 import CoinsSection from './CoinsSection';
+import ChartAndTotalValue from './ChartAndTotalValue';
 
 const UsersCoinInformation = ({ userCoinsTickerData, loadingData }) => {
     return (
@@ -8,6 +9,7 @@ const UsersCoinInformation = ({ userCoinsTickerData, loadingData }) => {
                 userCoinsTickerData={userCoinsTickerData}
                 loadingData={loadingData}
             />
+            <ChartAndTotalValue userCoinsTickerData={userCoinsTickerData} />
         </div>
     );
 };
