@@ -4,8 +4,8 @@ import UserCoinTickerInfo from './UserCoinTickerInfo';
 
 const styles = {
     mainContainer:
-        'coins-container w-full md:w-2/5 bg-lightPurpleToWhiteGradientDown',
-    userCoins: 'flex flex-wrap',
+        'coins-container lg:w-2/5 bg-lightPurpleToWhiteGradientDown overflow-auto',
+    userCoins: 'flex lg:flex-wrap w-max lg:w-auto',
 };
 
 const CoinsSection = ({ userCoinsTickerData, loadingData }) => {

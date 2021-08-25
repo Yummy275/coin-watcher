@@ -4,7 +4,7 @@ import ChartAndTotalValue from './ChartAndTotalValue';
 
 const UsersCoinInformation = ({ userCoinsTickerData, loadingData }) => {
     return (
-        <div className="md:flex">
+        <div className="lg:flex">
             <CoinsSection
                 userCoinsTickerData={userCoinsTickerData}
                 loadingData={loadingData}
