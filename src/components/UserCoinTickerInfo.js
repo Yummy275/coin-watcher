@@ -2,11 +2,12 @@ import React from 'react';
 import getHoldAmount from '../data/getHoldAmount';
 
 const styles = {
-    mainContainer: 'flex m-4',
+    mainContainer: 'flex m-2 p-2 bg-white rounded',
     coinImg: 'w-14',
     infoSection: 'ml-2',
-    coinTitle: '',
+    coinTitle: 'text-lg',
     coinInfo: '',
+    coinTotal: 'italic underline',
 };
 
 const UserCoinTickerInfo = ({ coinInfo }) => {
@@ -25,7 +26,7 @@ const UserCoinTickerInfo = ({ coinInfo }) => {
                 </div>
                 <div className={styles.coinInfo}>${parsedPrice.toFixed(2)}</div>
                 <div className={styles.coinInfo}>x {holdAmount}</div>
-                <div className={styles.coinInfo}>
+                <div className={styles.coinTotal}>
                     ${(parsedPrice * holdAmount).toFixed(2)}
                 </div>
             </div>
