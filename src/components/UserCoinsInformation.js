@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import CoinsSection from './CoinsSection';
 import ChartAndTotalValue from './ChartAndTotalValue';
 
@@ -7,6 +7,13 @@ const UsersCoinInformation = ({
     loadingData,
     updateUserCoins,
 }) => {
+    useEffect(() => {
+        const autoUpdatePrices = setInterval(() => {
+            updateUserCoins();
+        }, 60000);
+        return () => clearInterval(autoUpdatePrices);
+    });
+
     if (userCoinsTickerData === null) {
         return <h1>Error loading coins. Reload page or check internet.</h1>;
     } else {

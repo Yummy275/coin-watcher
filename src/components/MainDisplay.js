@@ -36,13 +36,6 @@ const MainDisplay = () => {
         initialLoad();
     }, []);
 
-    useEffect(() => {
-        const autoUpdatePrices = setInterval(() => {
-            updateUserCoins();
-        }, 30000);
-        return () => clearInterval(autoUpdatePrices);
-    });
-
     return (
         <>
             {addingCoinData ? (

@@ -1,7 +1,7 @@
 import loadSavedCoins from './loadSavedCoins';
 import roundNumberString from './roundNumberString';
 
-const updateCoinHoldValue = (symbol, newHoldValue) => {
+const updateCoinHoldAmount = (symbol, newHoldValue) => {
     const formattedHoldAmount = roundNumberString(newHoldValue);
     const savedCoinsArr = loadSavedCoins();
     for (var i = 0; i < savedCoinsArr.length; i++) {
@@ -12,4 +12,4 @@ const updateCoinHoldValue = (symbol, newHoldValue) => {
     }
 };
 
-export default updateCoinHoldValue;
+export default updateCoinHoldAmount;
