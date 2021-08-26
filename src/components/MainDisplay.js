@@ -12,6 +12,7 @@ const MainDisplay = () => {
     const [loading, setLoading] = useState(true);
 
     const updateUserCoins = async () => {
+        console.log('updating user coins');
         const savedCoins = loadSavedCoins();
         if (savedCoins) {
             const coinSymbols = getSavedCoinSymbols();
@@ -22,6 +23,8 @@ const MainDisplay = () => {
                 alert('Error getting coin information. Reload.');
                 setUserCoinsTickerData(null);
             }
+        } else {
+            setUserCoinsTickerData([]);
         }
     };
 
@@ -33,6 +36,13 @@ const MainDisplay = () => {
 
         initialLoad();
     }, []);
+
+    useEffect(() => {
+        const autoUpdatePrices = setInterval(() => {
+            updateUserCoins();
+        }, 30000);
+        return () => clearInterval(autoUpdatePrices);
+    });
 
     return (
         <>
