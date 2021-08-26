@@ -8,7 +8,11 @@ const styles = {
     userCoins: 'flex lg:flex-wrap w-max lg:w-auto mb-4 lg:mb-0',
 };
 
-const CoinsSection = ({ userCoinsTickerData, loadingData }) => {
+const CoinsSection = ({
+    userCoinsTickerData,
+    loadingData,
+    updateUserCoins,
+}) => {
     return (
         <div className={styles.mainContainer}>
             {loadingData ? (
@@ -16,13 +20,19 @@ const CoinsSection = ({ userCoinsTickerData, loadingData }) => {
             ) : (
                 <>
                     {userCoinsTickerData === null ? (
-                        <h1>No coins found</h1>
+                        <h1>Error getting coin information</h1>
+                    ) : userCoinsTickerData.length === 0 ? (
+                        <h2>
+                            No saved coins found! Use search above to find
+                            coins.
+                        </h2>
                     ) : (
                         <div className={styles.userCoins}>
                             {userCoinsTickerData.map((coin) => (
                                 <UserCoinTickerInfo
                                     coinInfo={coin}
                                     key={coin.id}
+                                    updateUserCoins={updateUserCoins}
                                 />
                             ))}
                         </div>

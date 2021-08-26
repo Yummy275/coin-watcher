@@ -13,6 +13,7 @@ module.exports = {
                 black: '#0C0F0A',
                 white: '#EEF4ED',
                 lightPurple: '#BC9EC1',
+                red: '#ad0000',
             },
             backgroundImage: {
                 lightPurpleToWhiteGradientDown:

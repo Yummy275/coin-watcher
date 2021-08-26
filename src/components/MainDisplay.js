@@ -12,7 +12,6 @@ const MainDisplay = () => {
     const [loading, setLoading] = useState(true);
 
     const updateUserCoins = async () => {
-        console.log('updating user coins');
         const savedCoins = loadSavedCoins();
         if (savedCoins) {
             const coinSymbols = getSavedCoinSymbols();
@@ -62,6 +61,7 @@ const MainDisplay = () => {
             <UsersCoinInformation
                 userCoinsTickerData={userCoinsTickerData}
                 loadingData={loading}
+                updateUserCoins={updateUserCoins}
             />
         </>
     );
