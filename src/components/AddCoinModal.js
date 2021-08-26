@@ -3,9 +3,9 @@ import addNewCoin from '../data/addNewCoin';
 
 const styles = {
     blurredBg:
-        'blurredBg flex justify-center items-center w-screen h-screen absolute z-10',
+        'blurredBg flex justify-center items-center w-screen h-screen fixed -top-0 z-10',
     contentContainer:
-        'flex flex-col w-102 h-102 p-3 bg-white rounded shadow-md',
+        'flex flex-col w-full max-w-lg h-102 p-3 bg-white rounded shadow-md',
     title: 'text-center text-lg',
     logo: 'w-28 my-2 mx-auto',
     description: 'text-sm text-center h-56 overflow-auto',

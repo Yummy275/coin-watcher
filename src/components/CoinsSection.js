@@ -5,7 +5,7 @@ import UserCoinTickerInfo from './UserCoinTickerInfo';
 const styles = {
     mainContainer:
         'coins-container lg:w-2/5 bg-lightPurpleToWhiteGradientDown overflow-auto',
-    userCoins: 'flex lg:flex-wrap w-max lg:w-auto',
+    userCoins: 'flex lg:flex-wrap w-max lg:w-auto mb-4 lg:mb-0',
 };
 
 const CoinsSection = ({ userCoinsTickerData, loadingData }) => {

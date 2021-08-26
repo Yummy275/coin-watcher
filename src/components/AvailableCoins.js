@@ -6,7 +6,7 @@ import Loading from './Loading';
 const styles = {
     coinSearchInput: 'p-1 bg-white rounded-t focus:outline-none',
     searchMenu:
-        'absolute w-full bg-white top-8 rounded-b transition-all duration-200 linear',
+        'absolute z-10 w-full bg-white top-8 rounded-b transition-all duration-200 linear',
 };
 
 const AvailableCoins = ({
@@ -57,17 +57,25 @@ const AvailableCoins = ({
         listRef.current.scrollToItem(scrollIndex, 'start');
     };
 
+    //delays closing menu so menu item can be clicked
+    const delayedCloseSearchMenu = () => {
+        setTimeout(() => {
+            setHideSearchMenu(true);
+        }, 50);
+    };
+
     return (
-        <>
+        <div
+            onClick={() => setHideSearchMenu(false)}
+            onBlur={delayedCloseSearchMenu}
+        >
             <input
                 className={styles.coinSearchInput}
                 onChange={(e) => {
                     searchAvailableCoins(e.target.value);
                 }}
-                onClick={() => setHideSearchMenu(false)}
             />
             <div
-                onMouseLeave={() => setHideSearchMenu(true)}
                 className={`${styles.searchMenu} ${
                     hiding
                         ? 'h-0 opacity-0 pointer-events-none'
@@ -88,7 +96,7 @@ const AvailableCoins = ({
                     </List>
                 )}
             </div>
-        </>
+        </div>
     );
 };
 
