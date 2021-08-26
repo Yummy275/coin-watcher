@@ -40,8 +40,14 @@ const ChartAndTotalValue = ({ userCoinsTickerData }) => {
 
     return (
         <div className={styles.mainContainer}>
-            <h1 className={styles.totalValue}>${findTotalWorth()}</h1>
-            <DoughnutChart data={chartData(userCoinsTickerData)} />
+            {userCoinsTickerData.length === 0 ? (
+                ''
+            ) : (
+                <>
+                    <h1 className={styles.totalValue}>${findTotalWorth()}</h1>
+                    <DoughnutChart data={chartData(userCoinsTickerData)} />{' '}
+                </>
+            )}
             <Attribution />
         </div>
     );

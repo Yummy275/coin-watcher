@@ -6,6 +6,7 @@ const styles = {
     mainContainer:
         'coins-container lg:w-2/5 bg-lightPurpleToWhiteGradientDown overflow-auto',
     userCoins: 'flex lg:flex-wrap w-max lg:w-auto mb-4 lg:mb-0',
+    noCoinsMsg: 'text-2xl p-1 text-center',
 };
 
 const CoinsSection = ({
@@ -19,10 +20,8 @@ const CoinsSection = ({
                 <Loading />
             ) : (
                 <>
-                    {userCoinsTickerData === null ? (
-                        <h1>Error getting coin information</h1>
-                    ) : userCoinsTickerData.length === 0 ? (
-                        <h2>
+                    {userCoinsTickerData.length === 0 ? (
+                        <h2 className={styles.noCoinsMsg}>
                             No saved coins found! Use search above to find
                             coins.
                         </h2>

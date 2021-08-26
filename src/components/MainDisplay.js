@@ -13,14 +13,18 @@ const MainDisplay = () => {
 
     const updateUserCoins = async () => {
         const savedCoins = loadSavedCoins();
-        if (savedCoins) {
-            const coinSymbols = getSavedCoinSymbols();
-            try {
-                const coinTickerData = await getCoinsInfo(coinSymbols);
-                setUserCoinsTickerData(coinTickerData);
-            } catch (error) {
-                alert('Error getting coin information. Reload.');
-                setUserCoinsTickerData(null);
+        if (savedCoins !== null) {
+            if (savedCoins.length !== 0) {
+                const coinSymbols = getSavedCoinSymbols();
+                try {
+                    const coinTickerData = await getCoinsInfo(coinSymbols);
+                    setUserCoinsTickerData(coinTickerData);
+                } catch (error) {
+                    alert('Error getting coin information. Reload.');
+                    setUserCoinsTickerData(null);
+                }
+            } else {
+                setUserCoinsTickerData([]);
             }
         } else {
             setUserCoinsTickerData([]);
