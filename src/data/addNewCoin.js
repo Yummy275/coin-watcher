@@ -20,9 +20,7 @@ const addNewCoin = (symbol, holdAmount) => {
             const updatedArr = [...currentCoins, newCoin];
             localStorage.setItem('savedCoins', JSON.stringify(updatedArr));
         } else {
-            alert(
-                'You have already added this coin before! Edit hold amount or delete using edit button.'
-            );
+            alert('You have already added this coin!');
         }
     }
 };
